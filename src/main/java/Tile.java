@@ -1,19 +1,19 @@
 public enum Tile {
-    E("E"),
-    B("B"),
-    W("W"),
-    B_L("B_L"),
-    W_L("W_L"),
-    ICON("ICON");
+    E("e.png"),
+    B("b.png"),
+    W("w.png"),
+    B_L("b_l.png"),
+    W_L("w_l.png"),
+    ICON("icon.png");
 
-    private String title;
+    private String name;
 
     Tile(String title) {
-        this.title = title;
+        this.name = title;
     }
 
     public String getTitle() {
-        return title.toLowerCase();
+        return name;
     }
 
 }

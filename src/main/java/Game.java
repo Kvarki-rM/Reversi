@@ -5,7 +5,6 @@ import java.awt.event.MouseEvent;
 import java.util.Objects;
 
 public class Game extends JFrame {
-
     private static JPanel panel;
     private Board actualGame = new Board();
 
@@ -39,12 +38,11 @@ public class Game extends JFrame {
                 int x = e.getX() / 64;
                 int y = e.getY() / 64;
                 if (e.getButton() == MouseEvent.BUTTON1) {
-                    makeTurn(new Stats(x, y));
+                    makeTurn(new Coordinate(x, y));
                 }
 
             }
         });
-
         panel.setPreferredSize(new Dimension(512, 512));
         add(panel);
     }
@@ -52,23 +50,24 @@ public class Game extends JFrame {
     private void window() {
         pack();
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        setTitle("^-^");
+        setTitle("^-^ " + actualGame.turn+" Turn");
         setVisible(true);
         setIconImage(getImage(Tile.ICON));
     }
 
     private Image getImage(Tile tile) {
-        String filename = tile.getTitle() + ".png";
+        String filename = tile.getTitle();
         ImageIcon icon = new ImageIcon(getClass().getResource(filename));
         return icon.getImage();
     }
 
-    private void makeTurn(Stats coord) {
+    private void makeTurn(Coordinate coord) {
         scanner(actualGame.turn, actualGame.pastTurn);
         if ((actualGame.board[coord.x][coord.y].getStatus() == Status.WHITE_L ||
                 actualGame.board[coord.x][coord.y].getStatus() == Status.BLACK_L)) {
             add(coord.x, coord.y, actualGame.turn, actualGame.pastTurn);
             actualGame.switchTurn();
+            setTitle("^-^ " + actualGame.turn);
             panel.repaint();
         }
     }
@@ -83,7 +82,7 @@ public class Game extends JFrame {
         actualGame.board[x][y].setStatus(value);
         //вверх
         for (int i = 1; i < x; i++)
-            if ( actualGame.board[x - i][y].getStatus().equals(value)) {
+            if (actualGame.board[x - i][y].getStatus().equals(value)) {
                 for (int j = i; j > 0; j--)
                     if (Objects.equals(actualGame.board[x - j][y].getStatus(), another))
                         actualGame.board[x - j][y].setStatus(value);
@@ -282,6 +281,4 @@ public class Game extends JFrame {
             this.dispose();
         }
     }
-
-
 }
