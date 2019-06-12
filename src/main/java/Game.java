@@ -50,7 +50,7 @@ public class Game extends JFrame {
     private void window() {
         pack();
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        setTitle("^-^ " + actualGame.turn+" Turn");
+        setTitle("^-^ " + actualGame.turn + " Turn");
         setVisible(true);
         setIconImage(getImage(Tile.ICON));
     }
@@ -80,9 +80,15 @@ public class Game extends JFrame {
 
     private void add(int x, int y, Status value, Status another) {
         actualGame.board[x][y].setStatus(value);
+        for (int i = 0; i < 8; i++)
+            for (int j = 0; j < 8; j++)
+                if (Objects.equals(actualGame.board[i][j].getStatus(), Status.WHITE_L) ||
+                        Objects.equals(actualGame.board[i][j].getStatus(), Status.BLACK_L))
+                    actualGame.board[i][j].setStatus(Status.EMPTY);
+
         //вверх
-        for (int i = 1; i < x; i++)
-            if (actualGame.board[x - i][y].getStatus().equals(value)) {
+        for (int i = 1; i <= x; i++)
+            if (Objects.equals(actualGame.board[x - i][y].getStatus(), value)) {
                 for (int j = i; j > 0; j--)
                     if (Objects.equals(actualGame.board[x - j][y].getStatus(), another))
                         actualGame.board[x - j][y].setStatus(value);
@@ -91,19 +97,17 @@ public class Game extends JFrame {
             }
         //вправо
         for (int i = 1; i < 8 - y; i++) {
-            if (actualGame.board[x][y + i].getStatus().equals(value)) {
-                for (int j = i; j > 0; j--) {
-                    if (Objects.equals(actualGame.board[x][y + i - j].getStatus(), another)) {
-                        actualGame.board[x][y + i - j].setStatus(value);
-                    }
-                }
+            if (Objects.equals(actualGame.board[x][y + i].getStatus(), value)) {
+                for (int j = 0; j < i; j++)
+                    if (Objects.equals(actualGame.board[x][y + j].getStatus(), another))
+                        actualGame.board[x][y + j].setStatus(value);
             } else if (actualGame.board[x][y + i].getStatus().equals(Status.EMPTY)) {
                 break;
             }
         }
         //влево
-        for (int i = 1; i < y; i++) {
-            if (actualGame.board[x][y - i].getStatus().equals(value)) {
+        for (int i = 1; i <= y; i++) {
+            if (Objects.equals(actualGame.board[x][y - i].getStatus(), value)) {
                 for (int j = i; j > 0; j--) {
                     if (Objects.equals(actualGame.board[x][y - j].getStatus(), another)) {
                         actualGame.board[x][y - j].setStatus(value);
@@ -115,8 +119,8 @@ public class Game extends JFrame {
             }
         }
         //вниз
-        for (int i = 1; i < 7 - x; i++)
-            if (actualGame.board[x + i][y].getStatus().equals(value)) {
+        for (int i = 1; i < 8 - x; i++)
+            if (Objects.equals(actualGame.board[x + i][y].getStatus(), value)) {
                 for (int j = i; j > 0; j--)
                     if (Objects.equals(actualGame.board[x + i - j][y].getStatus(), another))
                         actualGame.board[x + i - j][y].setStatus(value);
@@ -124,8 +128,8 @@ public class Game extends JFrame {
                 break;
             }
         //вниз-вправо
-        for (int i = 1; i < Math.min(7 - x, 7 - y); i++) {
-            if (actualGame.board[x + i][y + i].getStatus().equals(value)) {
+        for (int i = 1; i < Math.min(8 - x, 8 - y); i++) {
+            if (Objects.equals(actualGame.board[x + i][y + i].getStatus(), value)) {
                 for (int j = i; j > 0; j--) {
                     if (Objects.equals(actualGame.board[x + i - j][y + i - j].getStatus(), another)) {
                         actualGame.board[x + i - j][y + i - j].setStatus(value);
@@ -136,8 +140,8 @@ public class Game extends JFrame {
             }
         }
         //вниз-влево
-        for (int i = 1; i < Math.min(7 - x, y); i++) {
-            if (actualGame.board[x + i][y - i].getStatus().equals(value)) {
+        for (int i = 1; i < Math.min(8 - x, y + 1); i++) {
+            if (Objects.equals(actualGame.board[x + i][y - i].getStatus(), value)) {
                 for (int j = i; j > 0; j--) {
                     if (Objects.equals(actualGame.board[x + j][y - j].getStatus(), another)) {
                         actualGame.board[x + j][y - j].setStatus(value);
@@ -148,8 +152,8 @@ public class Game extends JFrame {
             }
         }
         //вверх-вправо
-        for (int i = 1; i < Math.min(x, 7 - y); i++)
-            if (actualGame.board[x - i][y + i].getStatus().equals(value)) {
+        for (int i = 1; i < Math.min(x + 1, 8 - y); i++)
+            if (Objects.equals(actualGame.board[x - i][y + i].getStatus(), value)) {
                 for (int j = i; j > 0; j--)
                     if (Objects.equals(actualGame.board[x - j][y + j].getStatus(), another))
                         actualGame.board[x - j][y + j].setStatus(value);
@@ -157,8 +161,8 @@ public class Game extends JFrame {
                 break;
             }
         //вверх-влево
-        for (int i = 1; i < Math.min(x, y); i++)
-            if (actualGame.board[x - i][y - i].getStatus().equals(value)) {
+        for (int i = 1; i <= Math.min(x, y); i++)
+            if (Objects.equals(actualGame.board[x - i][y - i].getStatus(), value)) {
                 for (int j = i; j > 0; j--)
                     if (Objects.equals(actualGame.board[x - i + j][y - i + j].getStatus(), another))
                         actualGame.board[x - i + j][y - i + j].setStatus(value);
@@ -169,12 +173,6 @@ public class Game extends JFrame {
     }
 
     private void scanner(Status count, Status another) {
-        for (int i = 0; i < 8; i++)
-            for (int j = 0; j < 8; j++)
-                if (Objects.equals(actualGame.board[i][j].getStatus(), Status.WHITE_L) ||
-                        Objects.equals(actualGame.board[i][j].getStatus(), Status.BLACK_L))
-                    actualGame.board[i][j].setStatus(Status.EMPTY);
-
         for (int i = 0; i < 8; i++)
             for (int j = 0; j < 8; j++)
                 if (Objects.equals(actualGame.board[i][j].getStatus(), count))
