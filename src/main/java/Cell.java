@@ -12,5 +12,6 @@ class Cell {
     Status getStatus() {
         return this.status;
     }
+
 }
 
