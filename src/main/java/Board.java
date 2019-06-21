@@ -2,7 +2,7 @@ import java.util.Objects;
 
 class Board {
     Cell[][] board;
-    Cell[][] lastboard;
+    private Cell[][] lastboard;
     Status turn = Status.BLACK;
     private Status pastTurn = Status.WHITE;
     Status helper = Status.BLACK_L;
