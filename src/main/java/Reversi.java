@@ -97,7 +97,6 @@ public class Reversi extends JFrame {
         }
     }
 
-
     private void end() {
         JOptionPane.showMessageDialog(this, "Black " + actualGame.black + "\n" + "White " + actualGame.white,
                 "End", JOptionPane.INFORMATION_MESSAGE);
