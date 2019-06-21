@@ -37,7 +37,6 @@ public class Reversi extends JFrame {
                     g.drawImage(getImage(Tile.W_W), imageSize * size + 8 + (i * 24), size * imageSize - 48, this);
                 for (int i = 0; i < (bla / (whi + bla) * 10); i++)
                     g.drawImage(getImage(Tile.B_B), imageSize*size/2 + imageSize*size - (i * 24)-32, size * imageSize - 48, this);
-
                 if (temp < 2)
                     g.drawImage(getImage(Tile.BACK), imageSize * size + 5, imageSize * 3, this);
                 for (int x = 0; x < size; x++)

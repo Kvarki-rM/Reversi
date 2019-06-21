@@ -2,7 +2,7 @@ import java.util.Objects;
 
 class Board {
     Cell[][] board;
-    private Cell[][] lastboard;
+    private Cell[][] lastBoard;
     Status turn = Status.BLACK;
     private Status pastTurn = Status.WHITE;
     Status helper = Status.BLACK_L;
@@ -15,10 +15,10 @@ class Board {
 
     Board() {
         this.board = new Cell[size][size];
-        this.lastboard = new Cell[size][size];
+        this.lastBoard = new Cell[size][size];
         for (int x = 0; x < size; x++)
             for (int y = 0; y < size; y++)
-                lastboard[x][y] = new Cell();
+                lastBoard[x][y] = new Cell();
         for (int x = 0; x < size; x++)
             for (int y = 0; y < size; y++)
                 board[x][y] = new Cell();
@@ -34,7 +34,7 @@ class Board {
         numTurn = numTurn - 2;
         for (int i = 0; i < board.length; i++)
             for (int j = 0; j < board[0].length; j++)
-                board[i][j].setStatus(lastboard[i][j].getStatus());
+                board[i][j].setStatus(lastBoard[i][j].getStatus());
         scanner();
         switchTurn();
     }
@@ -73,7 +73,7 @@ class Board {
         temp++;
         for (int i = 0; i < board.length; i++)
             for (int j = 0; j < board[0].length; j++)
-                lastboard[i][j].setStatus(board[i][j].getStatus());
+                lastBoard[i][j].setStatus(board[i][j].getStatus());
 
         if (board[x][y].getStatus() != helper) throw new NullPointerException("Не совпадает вход и разрешение");
         board[x][y].setStatus(turn);
