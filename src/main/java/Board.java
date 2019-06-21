@@ -7,7 +7,7 @@ class Board {
     private Status pastTurn = Status.WHITE;
     Status helper = Status.BLACK_L;
     int size = Reversi.size;
-    int temp = 0;
+    private int temp = 0;
     int black = 2;
     int white = 2;
     int manyTurns = 4;
@@ -63,9 +63,9 @@ class Board {
                 if (cells[j].getStatus() == helper)
                     manyTurns++;
             }
-        if (manyTurns == 0 && black + white != 64 && temp <= 2) {
-            switchTurn();
+        if (manyTurns == 0 && black + white != size*size && temp <= 1) {
             temp++;
+            switchTurn();
         }
     }
 

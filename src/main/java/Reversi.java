@@ -43,7 +43,7 @@ public class Reversi extends JFrame {
                 for (int i = 0; i < (bla / (whi + bla) * 10); i++)
                     g.drawImage(getImage(Tile.B_B), size * imageSize + imageSize * 4 - (i * 24) - 32, size * imageSize - 48, this);
                 if (temp > 1)
-                    g.drawImage(getImage(Tile.BACK), imageSize*(size+1)+10, imageSize *2+13, this);
+                    g.drawImage(getImage(Tile.BACK), imageSize * (size + 1) + 10, imageSize * 2 + 13, this);
 
                 for (int x = 0; x < size; x++)
                     for (int y = 0; y < size; y++)
@@ -81,9 +81,10 @@ public class Reversi extends JFrame {
 
     private void makeTurn(Coordinate coord) {
         if (actualGame.manyTurns == 0) {
+            JOptionPane.showMessageDialog(this, "No way",
+                    "Ret", JOptionPane.INFORMATION_MESSAGE);
             actualGame.switchTurn();
-            actualGame.temp++;
-            if (actualGame.temp >= 2)
+            if (actualGame.manyTurns == 0)
                 end();
         }
         if (actualGame.board[coord.x][coord.y].getStatus() == actualGame.helper) {
