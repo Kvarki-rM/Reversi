@@ -25,18 +25,25 @@ public class Reversi extends JFrame {
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
                 g.drawImage(getImage(Tile.DOP), imageSize * size, 0, this);
-                g.drawString("" + actualGame.white, imageSize * size + 66, imageSize / 2);
+                g.drawString("" + actualGame.white, imageSize * size + 60, imageSize / 2);
                 g.drawString("" + actualGame.black, imageSize * size + 190, imageSize / 2);
                 g.drawString("Now move : " + actualGame.turn.toString().toLowerCase(), size * imageSize + 75, 90);
                 g.drawString("Turn number : " + actualGame.numTurn, imageSize * size + 80, imageSize * 2 - imageSize / 3);
-                if (temp < 2)
-                    g.drawImage(getImage(Tile.BACK), imageSize * size+5, imageSize * 3, this);
+                double whi = actualGame.white;
+                double bla = actualGame.black;
+                g.drawString("" + Math.round(whi / (whi + bla) * 100), imageSize * size + 16, size * imageSize - 64);
+                g.drawString("" + Math.round(bla / (whi + bla) * 100), imageSize*size/2 + imageSize*size -32, size * imageSize - 64);
+                System.out.println(whi);
+                for (int i = 0; i < (whi / (whi + bla) * 10); i++)
+                    g.drawImage(getImage(Tile.W_W), imageSize * size + 8 + (i * 24), size * imageSize - 48, this);
+                for (int i = 0; i < (bla / (whi + bla) * 10); i++)
+                    g.drawImage(getImage(Tile.B_B), imageSize*size/2 + imageSize*size - (i * 24)-32, size * imageSize - 48, this);
 
+                if (temp < 2)
+                    g.drawImage(getImage(Tile.BACK), imageSize * size + 5, imageSize * 3, this);
                 for (int x = 0; x < size; x++)
-                    for (int y = 0; y < size; y++) {
-                        Tile tile = getTile(x, y);
-                        g.drawImage(getImage(tile), x * imageSize, y * imageSize, this);
-                    }
+                    for (int y = 0; y < size; y++)
+                        g.drawImage(getImage(actualGame.board[x][y].getStatus().getTile()), x * imageSize, y * imageSize, this);
             }
         };
         panel.addMouseListener(new MouseAdapter() {
@@ -63,13 +70,13 @@ public class Reversi extends JFrame {
         pack();
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setTitle(actualGame.turn + " Turn           " + "White : " + actualGame.white + " Black : " + actualGame.black);
+        setIconImage(getImage(Tile.B_ICON));
         setLocationRelativeTo(null);
         setVisible(true);
     }
 
     private Image getImage(Tile tile) {
-        ImageIcon icon = new ImageIcon(getClass().getResource(tile.getTitle()));
-        return icon.getImage();
+        return new ImageIcon(getClass().getResource(tile.getTitle())).getImage();
     }
 
     private void makeTurn(Coordinate coord) {
@@ -83,16 +90,14 @@ public class Reversi extends JFrame {
             actualGame.add(coord.x, coord.y);
             actualGame.switchTurn();
             setTitle(actualGame.turn + " Turn           " + "White : " + actualGame.white + " Black : " + actualGame.black);
+            if (actualGame.turn == Status.WHITE)
+                setIconImage(getImage(Tile.W_ICON));
+            else setIconImage(getImage(Tile.B_ICON));
             if (actualGame.manyTurns == 0) end();
             panel.repaint();
         }
     }
 
-    private Tile getTile(int x, int y) {
-        if (actualGame.board[x][y].getStatus() == Status.EMPTY)
-            return Tile.E;
-        else return actualGame.board[x][y].getStatus().getTile();
-    }
 
     private void end() {
         JOptionPane.showMessageDialog(this, "Black " + actualGame.black + "\n" + "White " + actualGame.white,
