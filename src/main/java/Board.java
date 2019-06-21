@@ -63,7 +63,7 @@ class Board {
                 if (cells[j].getStatus() == helper)
                     manyTurns++;
             }
-        if (manyTurns == 0 && black + white != 64 && temp <= 3) {
+        if (manyTurns == 0 && black + white != 64 && temp <= 2) {
             switchTurn();
             temp++;
         }

@@ -13,7 +13,7 @@ public class Starter extends JFrame {
 
     private Starter() {
         super("Starter");
-        this.setBounds(500, 500, 250, 100);
+        this.setBounds(500, 500, 350, 150);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         Container container = this.getContentPane();
         container.setLayout(new GridLayout(3, 2, 2, 2));

@@ -37,13 +37,14 @@ public class Reversi extends JFrame {
                 double whi = actualGame.white;
                 double bla = actualGame.black;
                 g.drawString("" + Math.round(whi / (whi + bla) * 100), imageSize * size + 16, size * imageSize - 64);
-                g.drawString("" + Math.round(bla / (whi + bla) * 100), imageSize * size / 2 + imageSize * size - 32, size * imageSize - 64);
+                g.drawString("" + Math.round(bla / (whi + bla) * 100), size * imageSize + imageSize * 4 - 32, size * imageSize - 64);
                 for (int i = 0; i < (whi / (whi + bla) * 10); i++)
                     g.drawImage(getImage(Tile.W_W), imageSize * size + 8 + (i * 24), size * imageSize - 48, this);
                 for (int i = 0; i < (bla / (whi + bla) * 10); i++)
-                    g.drawImage(getImage(Tile.B_B), imageSize * size / 2 + imageSize * size - (i * 24) - 32, size * imageSize - 48, this);
-                if (temp < 2)
-                    g.drawImage(getImage(Tile.BACK), imageSize * size + 5, imageSize * 3, this);
+                    g.drawImage(getImage(Tile.B_B), size * imageSize + imageSize * 4 - (i * 24) - 32, size * imageSize - 48, this);
+                if (temp > 1)
+                    g.drawImage(getImage(Tile.BACK), imageSize*(size+1)+10, imageSize *2+13, this);
+
                 for (int x = 0; x < size; x++)
                     for (int y = 0; y < size; y++)
                         g.drawImage(getImage(actualGame.board[x][y].getStatus().getTile()), x * imageSize, y * imageSize, this);
@@ -78,10 +79,6 @@ public class Reversi extends JFrame {
         setVisible(true);
     }
 
-    private Image getImage(Tile tile) {
-        return new ImageIcon(getClass().getResource(tile.getTitle())).getImage();
-    }
-
     private void makeTurn(Coordinate coord) {
         if (actualGame.manyTurns == 0) {
             actualGame.switchTurn();
@@ -99,6 +96,10 @@ public class Reversi extends JFrame {
             if (actualGame.manyTurns == 0) end();
             panel.repaint();
         }
+    }
+
+    private Image getImage(Tile tile) {
+        return new ImageIcon(getClass().getResource(tile.getTitle())).getImage();
     }
 
     private void end() {
