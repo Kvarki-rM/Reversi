@@ -4,7 +4,8 @@ public enum Tile {
     W("w.png"),
     B_L("b_l.png"),
     W_L("w_l.png"),
-    DOP("dop.png");
+    DOP("dop.png"),
+    BACK("back.png");
 
     private String name;
 

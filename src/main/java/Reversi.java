@@ -5,6 +5,7 @@ import java.awt.event.MouseEvent;
 
 public class Reversi extends JFrame {
     final static int size = 8;
+    private final static int imageSize = 64;
     private static JPanel panel;
     private Board actualGame = new Board();
     private int temp = 1;
@@ -23,35 +24,38 @@ public class Reversi extends JFrame {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                g.drawImage(getImage(Tile.DOP), 512, 0, this);
-                g.drawString("Now move : " + actualGame.turn.toString().toLowerCase(), 590, 90);
-                g.drawString("" + actualGame.white, 575, 35);
-                g.drawString("" + actualGame.black, 700, 35);
-                g.drawString("Turn number : " + actualGame.numTurn, 592, 105);
+                g.drawImage(getImage(Tile.DOP), imageSize * size, 0, this);
+                g.drawString("" + actualGame.white, imageSize * size + 66, imageSize / 2);
+                g.drawString("" + actualGame.black, imageSize * size + 190, imageSize / 2);
+                g.drawString("Now move : " + actualGame.turn.toString().toLowerCase(), size * imageSize + 75, 90);
+                g.drawString("Turn number : " + actualGame.numTurn, imageSize * size + 80, imageSize * 2 - imageSize / 3);
+                if (temp < 2)
+                    g.drawImage(getImage(Tile.BACK), imageSize * size+5, imageSize * 3, this);
+
                 for (int x = 0; x < size; x++)
                     for (int y = 0; y < size; y++) {
                         Tile tile = getTile(x, y);
-                        g.drawImage(getImage(tile), x * 64, y * 64, this);
+                        g.drawImage(getImage(tile), x * imageSize, y * imageSize, this);
                     }
             }
         };
         panel.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
-                int x = e.getX() / 64;
-                int y = e.getY() / 64;
+                int x = e.getX() / imageSize;
+                int y = e.getY() / imageSize;
                 if (e.getButton() == MouseEvent.BUTTON1)
-                    if (x >= 8 && temp >= 2) {
+                    if (x >= size && temp >= 2) {
                         temp = 0;
                         actualGame.backTurn();
                         panel.repaint();
-                    } else if (x < 8 && y < 8) {
+                    } else if (x < size && y < size) {
                         makeTurn(new Coordinate(x, y));
                         temp++;
                     }
             }
         });
-        panel.setPreferredSize(new Dimension(size * 64 + 256, size * 64));
+        panel.setPreferredSize(new Dimension(size * imageSize + imageSize * 4, size * 64));
         add(panel);
     }
 
@@ -69,7 +73,7 @@ public class Reversi extends JFrame {
     }
 
     private void makeTurn(Coordinate coord) {
-        if (actualGame.manyTurns == 0 ) {
+        if (actualGame.manyTurns == 0) {
             actualGame.switchTurn();
             actualGame.temp++;
             if (actualGame.temp >= 2)
