@@ -2,22 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9ce72815-c7b9-413f-bb81-82c2b861de65" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/Kvarki_rM.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Reversi.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/LogicTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Board.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Cell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Cell.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Game.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Tile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Tile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/icon.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Board.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Board.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Game$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Game$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Game.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Tile.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Tile.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/icon.png" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -35,8 +21,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/Reversi.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="286">
-              <caret line="72" column="61" selection-start-line="72" selection-start-column="61" selection-end-line="72" selection-end-column="61" />
+            <state relative-caret-position="884">
+              <caret line="73" column="25" lean-forward="true" selection-start-line="73" selection-start-column="25" selection-end-line="73" selection-end-column="25" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#303#304#0" expanded="true" />
@@ -53,8 +39,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Board.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="377">
-              <caret line="67" selection-start-line="67" selection-end-line="67" />
+            <state relative-caret-position="340">
+              <caret line="20" column="45" lean-forward="true" selection-start-line="20" selection-start-column="45" selection-end-line="20" selection-end-column="45" />
               <folding>
                 <element signature="e#2496#2913#1" />
                 <element signature="method#scanner#0;class#Board#0" />
@@ -67,9 +53,9 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/LogicTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="132" column="9" selection-start-line="132" selection-start-column="9" selection-end-line="132" selection-end-column="9" />
-              <caret line="133" column="9" selection-start-line="133" selection-start-column="9" selection-end-line="133" selection-end-column="9" />
+            <state relative-caret-position="2261">
+              <caret line="132" column="6" selection-start-line="132" selection-start-column="6" selection-end-line="132" selection-end-column="6" />
+              <caret line="133" column="6" selection-start-line="133" selection-start-column="6" selection-end-line="133" selection-end-column="6" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -124,6 +110,7 @@
       <find>makeTurn</find>
       <find>end</find>
       <find>lastboard</find>
+      <find>temp</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -138,8 +125,8 @@
         <option value="$PROJECT_DIR$/src/main/java/Status.java" />
         <option value="$PROJECT_DIR$/src/main/java/Tile.java" />
         <option value="$PROJECT_DIR$/src/test/java/LogicTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Board.java" />
         <option value="$PROJECT_DIR$/src/main/java/Reversi.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Board.java" />
       </list>
     </option>
   </component>
@@ -304,28 +291,31 @@
       <option name="project" value="LOCAL" />
       <updated>1560351056491</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="1.3">
+      <created>1561140144190</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1561140144190</updated>
+    </task>
+    <task id="LOCAL-00005" summary="1.4">
+      <created>1561143690798</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1561143690798</updated>
+    </task>
+    <task id="LOCAL-00006" summary="1.4">
+      <created>1561143721574</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1561143721574</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="LogicTest - 2019.06.21 at 15h 32m 09s.xml">
-      <configuration name="LogicTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="LogicTest - 2019.06.21 at 15h 32m 20s.xml">
-      <configuration name="LogicTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="LogicTest - 2019.06.21 at 15h 32m 26s.xml">
-      <configuration name="LogicTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="LogicTest - 2019.06.21 at 15h 33m 29s.xml">
-      <configuration name="LogicTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="LogicTest - 2019.06.21 at 15h 33m 48s.xml">
-      <configuration name="LogicTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="LogicTest - 2019.06.21 at 15h 34m 06s.xml">
-      <configuration name="LogicTest" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="LogicTest - 2019.06.21 at 20h 35m 58s.xml">
       <configuration name="LogicTest" configurationId="JUnit" />
     </history-entry>
@@ -336,6 +326,24 @@
       <configuration name="LogicTest" configurationId="JUnit" />
     </history-entry>
     <history-entry file="LogicTest - 2019.06.21 at 20h 37m 46s.xml">
+      <configuration name="LogicTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="LogicTest - 2019.06.21 at 21h 55m 43s.xml">
+      <configuration name="LogicTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="LogicTest - 2019.06.21 at 21h 55m 51s.xml">
+      <configuration name="LogicTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="LogicTest - 2019.06.21 at 21h 55m 57s.xml">
+      <configuration name="LogicTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="LogicTest - 2019.06.21 at 21h 57m 55s.xml">
+      <configuration name="LogicTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="LogicTest - 2019.06.21 at 21h 58m 06s.xml">
+      <configuration name="LogicTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="LogicTest - 2019.06.21 at 21h 58m 11s.xml">
       <configuration name="LogicTest" configurationId="JUnit" />
     </history-entry>
   </component>
@@ -402,19 +410,9 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="1.1" />
     <MESSAGE value="1.2" />
-    <option name="LAST_COMMIT_MESSAGE" value="1.2" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/Board.java</url>
-          <line>36</line>
-          <properties />
-          <option name="timeStamp" value="12" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="1.3" />
+    <MESSAGE value="1.4" />
+    <option name="LAST_COMMIT_MESSAGE" value="1.4" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/pom.xml">
@@ -548,9 +546,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/LogicTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="132" column="9" selection-start-line="132" selection-start-column="9" selection-end-line="132" selection-end-column="9" />
-          <caret line="133" column="9" selection-start-line="133" selection-start-column="9" selection-end-line="133" selection-end-column="9" />
+        <state relative-caret-position="2261">
+          <caret line="132" column="6" selection-start-line="132" selection-start-column="6" selection-end-line="132" selection-end-column="6" />
+          <caret line="133" column="6" selection-start-line="133" selection-start-column="6" selection-end-line="133" selection-end-column="6" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -559,8 +557,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Board.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="377">
-          <caret line="67" selection-start-line="67" selection-end-line="67" />
+        <state relative-caret-position="340">
+          <caret line="20" column="45" lean-forward="true" selection-start-line="20" selection-start-column="45" selection-end-line="20" selection-end-column="45" />
           <folding>
             <element signature="e#2496#2913#1" />
             <element signature="method#scanner#0;class#Board#0" />
@@ -571,8 +569,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Reversi.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="72" column="61" selection-start-line="72" selection-start-column="61" selection-end-line="72" selection-end-column="61" />
+        <state relative-caret-position="884">
+          <caret line="73" column="25" lean-forward="true" selection-start-line="73" selection-start-column="25" selection-end-line="73" selection-end-column="25" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#303#304#0" expanded="true" />
