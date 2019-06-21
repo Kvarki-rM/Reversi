@@ -7,7 +7,7 @@ public class Reversi extends JFrame {
     final static int size = 8;
     private static JPanel panel;
     private Board actualGame = new Board();
-    private boolean temp = false;
+    private int temp = 1;
 
     public static void main(String[] args) {
         new Reversi();
@@ -27,7 +27,7 @@ public class Reversi extends JFrame {
                 g.drawString("Now move : " + actualGame.turn.toString().toLowerCase(), 590, 90);
                 g.drawString("" + actualGame.white, 575, 35);
                 g.drawString("" + actualGame.black, 700, 35);
-                g.drawString("" + actualGame.numTurn, 638, 105);
+                g.drawString("Turn number : " + actualGame.numTurn, 592, 105);
                 for (int x = 0; x < size; x++)
                     for (int y = 0; y < size; y++) {
                         Tile tile = getTile(x, y);
@@ -41,13 +41,13 @@ public class Reversi extends JFrame {
                 int x = e.getX() / 64;
                 int y = e.getY() / 64;
                 if (e.getButton() == MouseEvent.BUTTON1)
-                    if (x >= 8 && temp) {
-                        temp = false;
+                    if (x >= 8 && temp >= 2) {
+                        temp = 0;
                         actualGame.backTurn();
                         panel.repaint();
                     } else if (x < 8 && y < 8) {
                         makeTurn(new Coordinate(x, y));
-                        temp = true;
+                        temp++;
                     }
             }
         });
@@ -69,10 +69,7 @@ public class Reversi extends JFrame {
     }
 
     private void makeTurn(Coordinate coord) {
-        for (int i = 0; i < actualGame.board.length; i++)
-            for (int j = 0; j < actualGame.board[0].length; j++)
-                actualGame.lastboard[i][j].setStatus(actualGame.board[i][j].getStatus());
-        if (actualGame.manyTurns == 0 && actualGame.black + actualGame.white != 64) {
+        if (actualGame.manyTurns == 0 ) {
             actualGame.switchTurn();
             actualGame.temp++;
             if (actualGame.temp >= 2)

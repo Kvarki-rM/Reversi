@@ -11,7 +11,7 @@ class Board {
     int black = 2;
     int white = 2;
     int manyTurns = 4;
-    int numTurn = 0;
+    int numTurn = 1;
 
     Board() {
         this.board = new Cell[size][size];
@@ -32,7 +32,9 @@ class Board {
 
     void backTurn() {
         numTurn = numTurn - 2;
-        board = lastboard;
+        for (int i = 0; i < board.length; i++)
+            for (int j = 0; j < board[0].length; j++)
+                board[i][j].setStatus(lastboard[i][j].getStatus());
         scanner();
         switchTurn();
     }
@@ -43,13 +45,13 @@ class Board {
         manyTurns = 0;
         numTurn++;
 
-        this.pastTurn = this.turn;
-        if (this.turn == Status.WHITE) {
-            this.turn = Status.BLACK;
-            this.helper = Status.BLACK_L;
+        pastTurn = turn;
+        if (turn == Status.WHITE) {
+            turn = Status.BLACK;
+            helper = Status.BLACK_L;
         } else {
-            this.turn = Status.WHITE;
-            this.helper = Status.WHITE_L;
+            turn = Status.WHITE;
+            helper = Status.WHITE_L;
         }
         scanner();
         for (Cell[] cells : this.board)
@@ -61,10 +63,17 @@ class Board {
                 if (cells[j].getStatus() == helper)
                     manyTurns++;
             }
-
+        if (manyTurns == 0 && black + white != 64 && temp <= 3) {
+            switchTurn();
+            temp++;
+        }
     }
 
     void add(int x, int y) {
+        temp++;
+        for (int i = 0; i < board.length; i++)
+            for (int j = 0; j < board[0].length; j++)
+                lastboard[i][j].setStatus(board[i][j].getStatus());
 
         if (board[x][y].getStatus() != helper) throw new NullPointerException("Не совпадает вход и разрешение");
         board[x][y].setStatus(turn);
