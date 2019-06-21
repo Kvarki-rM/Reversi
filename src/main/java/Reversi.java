@@ -33,7 +33,6 @@ public class Reversi extends JFrame {
                 double bla = actualGame.black;
                 g.drawString("" + Math.round(whi / (whi + bla) * 100), imageSize * size + 16, size * imageSize - 64);
                 g.drawString("" + Math.round(bla / (whi + bla) * 100), imageSize*size/2 + imageSize*size -32, size * imageSize - 64);
-                System.out.println(whi);
                 for (int i = 0; i < (whi / (whi + bla) * 10); i++)
                     g.drawImage(getImage(Tile.W_W), imageSize * size + 8 + (i * 24), size * imageSize - 48, this);
                 for (int i = 0; i < (bla / (whi + bla) * 10); i++)
