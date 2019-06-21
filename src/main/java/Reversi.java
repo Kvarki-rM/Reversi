@@ -4,7 +4,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class Reversi extends JFrame {
-    final static int size = 8;
+    static Status turn;
+    static int size = 8;
     private final static int imageSize = 64;
     private static JPanel panel;
     private Board actualGame = new Board();
@@ -14,7 +15,11 @@ public class Reversi extends JFrame {
         new Reversi();
     }
 
-    private Reversi() {
+    Reversi() {
+        if (turn == Status.WHITE) {
+            actualGame.switchTurn();
+            actualGame.numTurn -= 1;
+        }
         opener();
         window();
     }
@@ -32,11 +37,11 @@ public class Reversi extends JFrame {
                 double whi = actualGame.white;
                 double bla = actualGame.black;
                 g.drawString("" + Math.round(whi / (whi + bla) * 100), imageSize * size + 16, size * imageSize - 64);
-                g.drawString("" + Math.round(bla / (whi + bla) * 100), imageSize*size/2 + imageSize*size -32, size * imageSize - 64);
+                g.drawString("" + Math.round(bla / (whi + bla) * 100), imageSize * size / 2 + imageSize * size - 32, size * imageSize - 64);
                 for (int i = 0; i < (whi / (whi + bla) * 10); i++)
                     g.drawImage(getImage(Tile.W_W), imageSize * size + 8 + (i * 24), size * imageSize - 48, this);
                 for (int i = 0; i < (bla / (whi + bla) * 10); i++)
-                    g.drawImage(getImage(Tile.B_B), imageSize*size/2 + imageSize*size - (i * 24)-32, size * imageSize - 48, this);
+                    g.drawImage(getImage(Tile.B_B), imageSize * size / 2 + imageSize * size - (i * 24) - 32, size * imageSize - 48, this);
                 if (temp < 2)
                     g.drawImage(getImage(Tile.BACK), imageSize * size + 5, imageSize * 3, this);
                 for (int x = 0; x < size; x++)

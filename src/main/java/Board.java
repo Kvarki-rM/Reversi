@@ -6,7 +6,7 @@ class Board {
     Status turn = Status.BLACK;
     private Status pastTurn = Status.WHITE;
     Status helper = Status.BLACK_L;
-    private final int size = Reversi.size;
+    int size = Reversi.size;
     int temp = 0;
     int black = 2;
     int white = 2;
@@ -70,7 +70,7 @@ class Board {
     }
 
     void add(int x, int y) {
-        temp++;
+        temp = 0;
         for (int i = 0; i < board.length; i++)
             for (int j = 0; j < board[0].length; j++)
                 lastBoard[i][j].setStatus(board[i][j].getStatus());

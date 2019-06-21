@@ -6,7 +6,7 @@ class LogicTest {
     @Test
     void boardTest() {
         Board firstTestBoard = new Board();
-
+        firstTestBoard.size = 8;
         firstTestBoard.add(4, 5);
         firstTestBoard.switchTurn();
         firstTestBoard.add(3, 5);
@@ -130,8 +130,8 @@ class LogicTest {
         firstTestBoard.switchTurn();
         firstTestBoard.add(7, 0);
         firstTestBoard.switchTurn();
-      firstTestBoard.add(5, 0);
-      firstTestBoard.switchTurn();
+        firstTestBoard.add(5, 0);
+        firstTestBoard.switchTurn();
 
         // for (int i = 0; i < firstTestBoard.board.length; i++) {
         //     for (int j = 0; j < firstTestBoard.board[0].length; j++)
