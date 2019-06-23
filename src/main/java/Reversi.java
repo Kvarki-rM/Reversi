@@ -34,14 +34,17 @@ public class Reversi extends JFrame {
                 g.drawString("" + actualGame.black, imageSize * size + 190, imageSize / 2);
                 g.drawString("Now move : " + actualGame.turn.toString().toLowerCase(), size * imageSize + 75, 90);
                 g.drawString("Turn number : " + actualGame.numTurn, imageSize * size + 80, imageSize * 2 - imageSize / 3);
+
                 double whi = actualGame.white;
-                double bla = actualGame.black;
-                g.drawString("" + Math.round(whi / (whi + bla) * 100), imageSize * size + 16, size * imageSize - 64);
-                g.drawString("" + Math.round(bla / (whi + bla) * 100), size * imageSize + imageSize * 4 - 32, size * imageSize - 64);
-                for (int i = 0; i < (whi / (whi + bla) * 10); i++)
+                double bl = actualGame.black;
+                g.drawString("" + Math.round(whi / (whi + bl) * 100), imageSize * size + 16, size * imageSize - 64);
+                g.drawString("" + Math.round(bl / (whi + bl) * 100), size * imageSize + imageSize * 4 - 32, size * imageSize - 64);
+
+                for (int i = 0; i < (whi / (whi + bl) * 10); i++)
                     g.drawImage(getImage(Tile.W_W), imageSize * size + 8 + (i * 24), size * imageSize - 48, this);
-                for (int i = 0; i < (bla / (whi + bla) * 10); i++)
-                    g.drawImage(getImage(Tile.B_B), size * imageSize + imageSize * 4 - (i * 24) - 32, size * imageSize - 48, this);
+                for (int i = 0; i < (bl / (whi + bl) * 10); i++)
+                    g.drawImage(getImage(Tile.B_B), size * imageSize + imageSize * 4 - (i * 24) - 34, size * imageSize - 48, this);
+
                 if (temp > 1)
                     g.drawImage(getImage(Tile.BACK), imageSize * (size + 1) + 10, imageSize * 2 + 13, this);
 
