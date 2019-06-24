@@ -68,6 +68,18 @@ public class Reversi extends JFrame {
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
                 g.setFont(new Font(null, Font.BOLD, 22));
+                g.setFont(new Font("Arial", Font.ITALIC, 18));
+                g.drawImage(getImage(Tile.DOP), imageSize * size, 0, this);
+
+                double whi = actualGame.white;
+                double bl = actualGame.black;
+                int i1 = (int) (Math.round(whi / (whi + bl) * 240));
+
+                wh.setPreferredSize(new Dimension(i1, 32));
+                wh.setLocation(imageSize * size + 8, size * imageSize - 48);
+                g.drawImage(getImage(Tile.BLACK), imageSize * size + 8, size * imageSize - 48, this);
+                g.drawString("" + Math.round(whi / (whi + bl) * 100), imageSize * size + 10, size * imageSize - 55);
+                g.drawString("" + Math.round(bl / (whi + bl) * 100), size * imageSize + imageSize * 4 - 38, size * imageSize - 55);
 
                 label.setLocation(imageSize * size, 0);
                 label2.setLocation(imageSize * size + 128, 0);
@@ -79,24 +91,11 @@ public class Reversi extends JFrame {
                 if (actualGame.turn == Status.WHITE) back.setBackground(Color.WHITE);
                 else back.setBackground(Color.BLACK);
 
-                g.setFont(new Font("Arial", Font.ITALIC, 18));
-                g.drawImage(getImage(Tile.DOP), imageSize * size, 0, this);
-
-                double whi = actualGame.white;
-                double bl = actualGame.black;
-                int i1 = (int) (Math.round(whi / (whi + bl) * 240));
-                wh.setPreferredSize(new Dimension(i1, 32));
-                wh.setLocation(imageSize * size + 8, size * imageSize - 48);
-                g.drawImage(getImage(Tile.BLACK), imageSize * size + 8, size * imageSize - 48, this);
-                g.drawString("" + Math.round(whi / (whi + bl) * 100), imageSize * size + 10, size * imageSize - 55);
-                g.drawString("" + Math.round(bl / (whi + bl) * 100), size * imageSize + imageSize * 4 - 38, size * imageSize - 55);
-
                 if (temp > 1) g.drawImage(getImage(Tile.BACK), imageSize * (size + 1) + 10, imageSize * 2 + 13, this);
 
                 for (int x = 0; x < size; x++)
                     for (int y = 0; y < size; y++)
                         g.drawImage(getImage(actualGame.board[x][y].getStatus().getTile()), x * imageSize, y * imageSize, this);
-
             }
         };
         panel.addMouseListener(new MouseAdapter() {
