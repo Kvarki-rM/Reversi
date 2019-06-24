@@ -4,12 +4,11 @@ public enum Tile {
     W("w.png"),
     B_L("b_l.png"),
     W_L("w_l.png"),
-    B_B("b_b.png"),
-    W_W("w_w.png"),
     B_ICON("b_icon.png"),
     W_ICON("w_icon.png"),
     DOP("dop.png"),
-    BACK("back.png");
+    BACK("back.png"),
+    BLACK("black.png");
 
     private String name;
 

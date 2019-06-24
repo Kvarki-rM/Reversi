@@ -26,58 +26,77 @@ public class Reversi extends JFrame {
         window();
     }
 
-    //Dimension windowSize = new Dimension(128, 64);
-    //Font font = new Font("Verdana", Font.PLAIN, 16);
-    //JLabel label = new JLabel("" + actualGame.white);
-    //label.setVerticalAlignment(JLabel.CENTER);
-    //label.setHorizontalAlignment(JLabel.CENTER);
-    //label.setPreferredSize(windowSize);
-    //label.setFont(font);
-    //label.setOpaque(true);
-    //label.setBackground(Color.BLACK);
-    //label.setForeground(Color.WHITE);
-    //JLabel label2 = new JLabel("" + actualGame.white);
-    //label2.setVerticalAlignment(JLabel.CENTER);
-    //label2.setHorizontalAlignment(JLabel.CENTER);
-    //label2.setPreferredSize(windowSize);
-    //label2.setFont(font);
-    //label2.setOpaque(true);
-    //label2.setBackground(Color.WHITE);
-    //label2.setForeground(Color.BLACK);
-
     private void opener() {
+        Dimension windowSize = new Dimension(128, 64);
+        Border border = BorderFactory.createLineBorder(Color.BLACK, 1);
+        Font font = new Font("Verdana", Font.PLAIN, 16);
+
+        final JLabel label = new JLabel();
+        label.setVerticalAlignment(JLabel.CENTER);
+        label.setHorizontalAlignment(JLabel.CENTER);
+        label.setPreferredSize(windowSize);
+        label.setFont(font);
+        label.setBorder(border);
+        label.setOpaque(true);
+        label.setBackground(Color.BLACK);
+        label.setForeground(Color.WHITE);
+
+        final JLabel label2 = new JLabel();
+        label2.setVerticalAlignment(JLabel.CENTER);
+        label2.setHorizontalAlignment(JLabel.CENTER);
+        label2.setPreferredSize(windowSize);
+        label2.setFont(font);
+        label2.setBorder(border);
+        label2.setOpaque(true);
+        label2.setBackground(Color.WHITE);
+        label2.setForeground(Color.BLACK);
+
+        final JLabel back = new JLabel();
+        back.setVerticalAlignment(JLabel.CENTER);
+        back.setHorizontalAlignment(JLabel.CENTER);
+        back.setPreferredSize(new Dimension(256, 64));
+        back.setFont(new Font("Verdana", Font.PLAIN, 12));
+        back.setOpaque(true);
+        back.setForeground(Color.GRAY);
+
+        final JLabel wh = new JLabel();
+        wh.setOpaque(true);
+        wh.setForeground(Color.WHITE);
+
         panel = new JPanel() {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                // ((javax.swing.border.TitledBorder) jPanel1.getBorder()).setTitleFont(new Font("Arial", Font.ITALIC, 14));
-                //  g.setFont(g.getFont().deriveFont(g.getFont().getSize() * 100));
+                g.setFont(new Font(null, Font.BOLD, 22));
+
+                label.setLocation(imageSize * size, 0);
+                label2.setLocation(imageSize * size + 128, 0);
+                back.setLocation(imageSize * size, 64);
+                label.setText("" + actualGame.white);
+                label2.setText("" + actualGame.black);
+                back.setText("Now move : " + actualGame.turn.toString().toLowerCase() + " / Turn № : " + actualGame.numTurn);
+
+                if (actualGame.turn == Status.WHITE) back.setBackground(Color.WHITE);
+                else back.setBackground(Color.BLACK);
+
                 g.setFont(new Font("Arial", Font.ITALIC, 18));
                 g.drawImage(getImage(Tile.DOP), imageSize * size, 0, this);
-                g.drawString("" + actualGame.white, imageSize * size + 60, imageSize / 2 + 5);
-                g.drawString("" + actualGame.black, imageSize * size + 190, imageSize / 2 + 5);
 
-                setForeground(actualGame.turn == Status.WHITE ? (Color.WHITE) : Color.BLACK);
-                g.drawString("Now move : " + actualGame.turn.toString().toLowerCase(), size * imageSize + 60, 90);
-                g.drawString("Turn number : " + actualGame.numTurn, imageSize * size + 63, imageSize * 2 - imageSize / 3);
-
-                g.setFont(new Font(null, Font.BOLD, 22));
                 double whi = actualGame.white;
                 double bl = actualGame.black;
+                int i1 = (int) (Math.round(whi / (whi + bl) * 240));
+                wh.setPreferredSize(new Dimension(i1, 32));
+                wh.setLocation(imageSize * size + 8, size * imageSize - 48);
+                g.drawImage(getImage(Tile.BLACK), imageSize * size + 8, size * imageSize - 48, this);
                 g.drawString("" + Math.round(whi / (whi + bl) * 100), imageSize * size + 10, size * imageSize - 55);
                 g.drawString("" + Math.round(bl / (whi + bl) * 100), size * imageSize + imageSize * 4 - 38, size * imageSize - 55);
 
-                for (int i = 0; i < (whi / (whi + bl) * 10); i++)
-                    g.drawImage(getImage(Tile.W_W), imageSize * size + 8 + (i * 24), size * imageSize - 48, this);
-                for (int i = 0; i < (bl / (whi + bl) * 10); i++)
-                    g.drawImage(getImage(Tile.B_B), size * imageSize + imageSize * 4 - (i * 24) - 34, size * imageSize - 48, this);
-
-                if (temp > 1)
-                    g.drawImage(getImage(Tile.BACK), imageSize * (size + 1) + 10, imageSize * 2 + 13, this);
+                if (temp > 1) g.drawImage(getImage(Tile.BACK), imageSize * (size + 1) + 10, imageSize * 2 + 13, this);
 
                 for (int x = 0; x < size; x++)
                     for (int y = 0; y < size; y++)
                         g.drawImage(getImage(actualGame.board[x][y].getStatus().getTile()), x * imageSize, y * imageSize, this);
+
             }
         };
         panel.addMouseListener(new MouseAdapter() {
@@ -97,11 +116,11 @@ public class Reversi extends JFrame {
             }
         });
         panel.setPreferredSize(new Dimension(size * imageSize + imageSize * 4, size * 64));
-        // panel.add(label);
-        // panel.add(label2);
+        panel.add(back);
+        panel.add(label);
+        panel.add(label2);
+        panel.add(wh);
         add(panel);
-
-
     }
 
     private void window() {
