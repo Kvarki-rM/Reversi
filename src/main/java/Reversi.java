@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -25,20 +26,27 @@ public class Reversi extends JFrame {
     }
 
     private void opener() {
+
         panel = new JPanel() {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
+                // ((javax.swing.border.TitledBorder) jPanel1.getBorder()).setTitleFont(new Font("Arial", Font.ITALIC, 14));
+                //  g.setFont(g.getFont().deriveFont(g.getFont().getSize() * 100));
+                g.setFont(new Font("Arial", Font.ITALIC, 18));
                 g.drawImage(getImage(Tile.DOP), imageSize * size, 0, this);
-                g.drawString("" + actualGame.white, imageSize * size + 60, imageSize / 2);
-                g.drawString("" + actualGame.black, imageSize * size + 190, imageSize / 2);
-                g.drawString("Now move : " + actualGame.turn.toString().toLowerCase(), size * imageSize + 75, 90);
-                g.drawString("Turn number : " + actualGame.numTurn, imageSize * size + 80, imageSize * 2 - imageSize / 3);
+                g.drawString("" + actualGame.white, imageSize * size + 60, imageSize / 2 + 5);
+                g.drawString("" + actualGame.black, imageSize * size + 190, imageSize / 2 + 5);
 
+                setForeground(actualGame.turn == Status.WHITE ? (Color.WHITE) : Color.BLACK);
+                g.drawString("Now move : " + actualGame.turn.toString().toLowerCase(), size * imageSize + 60, 90);
+                g.drawString("Turn number : " + actualGame.numTurn, imageSize * size + 63, imageSize * 2 - imageSize / 3);
+
+                g.setFont(new Font(null, Font.BOLD, 22));
                 double whi = actualGame.white;
                 double bl = actualGame.black;
-                g.drawString("" + Math.round(whi / (whi + bl) * 100), imageSize * size + 16, size * imageSize - 64);
-                g.drawString("" + Math.round(bl / (whi + bl) * 100), size * imageSize + imageSize * 4 - 32, size * imageSize - 64);
+                g.drawString("" + Math.round(whi / (whi + bl) * 100), imageSize * size + 10, size * imageSize - 55);
+                g.drawString("" + Math.round(bl / (whi + bl) * 100), size * imageSize + imageSize * 4 - 38, size * imageSize - 55);
 
                 for (int i = 0; i < (whi / (whi + bl) * 10); i++)
                     g.drawImage(getImage(Tile.W_W), imageSize * size + 8 + (i * 24), size * imageSize - 48, this);
