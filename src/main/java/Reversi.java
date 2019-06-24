@@ -1,4 +1,5 @@
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
@@ -25,8 +26,26 @@ public class Reversi extends JFrame {
         window();
     }
 
-    private void opener() {
+    //Dimension windowSize = new Dimension(128, 64);
+    //Font font = new Font("Verdana", Font.PLAIN, 16);
+    //JLabel label = new JLabel("" + actualGame.white);
+    //label.setVerticalAlignment(JLabel.CENTER);
+    //label.setHorizontalAlignment(JLabel.CENTER);
+    //label.setPreferredSize(windowSize);
+    //label.setFont(font);
+    //label.setOpaque(true);
+    //label.setBackground(Color.BLACK);
+    //label.setForeground(Color.WHITE);
+    //JLabel label2 = new JLabel("" + actualGame.white);
+    //label2.setVerticalAlignment(JLabel.CENTER);
+    //label2.setHorizontalAlignment(JLabel.CENTER);
+    //label2.setPreferredSize(windowSize);
+    //label2.setFont(font);
+    //label2.setOpaque(true);
+    //label2.setBackground(Color.WHITE);
+    //label2.setForeground(Color.BLACK);
 
+    private void opener() {
         panel = new JPanel() {
             @Override
             protected void paintComponent(Graphics g) {
@@ -78,7 +97,11 @@ public class Reversi extends JFrame {
             }
         });
         panel.setPreferredSize(new Dimension(size * imageSize + imageSize * 4, size * 64));
+        // panel.add(label);
+        // panel.add(label2);
         add(panel);
+
+
     }
 
     private void window() {
