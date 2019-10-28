@@ -1,3 +1,5 @@
+import org.jetbrains.annotations.Contract;
+
 public enum Tile {
     E("e.png"),
     B("b.png"),
@@ -12,10 +14,12 @@ public enum Tile {
 
     private String name;
 
+    @Contract(pure = true)
     Tile(String title) {
         this.name = title;
     }
 
+    @Contract(pure = true)
     public String getTitle() {
         return name;
     }

@@ -1,3 +1,5 @@
+import org.jetbrains.annotations.Contract;
+
 public enum Status {
     EMPTY("Empty"),
     BLACK("Black"),
@@ -7,6 +9,7 @@ public enum Status {
 
     private String name;
 
+    @Contract(pure = true)
     Status(String title) {
         this.name = title;
     }

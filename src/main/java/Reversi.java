@@ -1,3 +1,5 @@
+import org.jetbrains.annotations.NotNull;
+
 import javax.swing.*;
 import javax.swing.border.Border;
 
@@ -152,7 +154,7 @@ public class Reversi extends JFrame {
         }
     }
 
-    private Image getImage(Tile tile) {
+    private Image getImage(@NotNull Tile tile) {
         return new ImageIcon(getClass().getResource(tile.getTitle())).getImage();
     }
 
