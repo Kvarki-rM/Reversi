@@ -2,6 +2,7 @@ import java.util.Objects;
 
 class Board {
     Cell[][] board;
+    int number;
     private Cell[][] lastBoard;
     Status turn = Status.BLACK;
     private Status pastTurn = Status.WHITE;
@@ -46,7 +47,7 @@ class Board {
         numTurn++;
 
         pastTurn = turn;
-        if (turn == Status.WHITE) {
+        if (turn == Status.WHITE) {//смена хода
             turn = Status.BLACK;
             helper = Status.BLACK_L;
         } else {
@@ -54,7 +55,7 @@ class Board {
             helper = Status.WHITE_L;
         }
         scanner();
-        for (Cell[] cells : this.board)
+        for (Cell[] cells : this.board)//подсчет статистики
             for (int j = 0; j < this.board[0].length; j++) {
                 if (cells[j].getStatus() == Status.BLACK)
                     black++;
@@ -63,7 +64,7 @@ class Board {
                 if (cells[j].getStatus() == helper)
                     manyTurns++;
             }
-        if (manyTurns == 0 && black + white != size*size && temp <= 1) {
+        if (manyTurns == 0 && black + white != size * size && temp <= 1) {
             temp++;
             switchTurn();
         }

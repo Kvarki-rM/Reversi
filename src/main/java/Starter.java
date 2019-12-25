@@ -10,6 +10,7 @@ public class Starter extends JFrame {
 
     private JTextField input = new JTextField("8", 5);
     private JRadioButton radio2 = new JRadioButton("White");
+    private JRadioButton radio3 = new JRadioButton("P_vs_P");
 
     private Starter() {
         super("Starter");
@@ -22,12 +23,19 @@ public class Starter extends JFrame {
         container.add(input);
 
         ButtonGroup group = new ButtonGroup();
+        ButtonGroup group2 = new ButtonGroup();
         JRadioButton radio1 = new JRadioButton("Black");
+        JRadioButton radio4 = new JRadioButton("P_vs_E");
         group.add(radio1);
         group.add(radio2);
+        group2.add(radio3);
+        group2.add(radio4);
         container.add(radio1);
-        radio1.setSelected(true);
         container.add(radio2);
+        container.add(radio3);
+        container.add(radio4);
+        radio1.setSelected(true);
+        radio4.setSelected(true);
         JButton button = new JButton("Press");
         button.addActionListener(new ButtonEvent());
         container.add(button);
@@ -37,6 +45,7 @@ public class Starter extends JFrame {
         public void actionPerformed(ActionEvent g) {
             Reversi.size = Integer.parseInt(input.getText());
             if (radio2.isSelected()) Reversi.turn = Status.WHITE;
+            if (radio3.isSelected()) Reversi.player = true;
             new Reversi();
             dispose();
         }

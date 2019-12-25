@@ -15,6 +15,8 @@ public class Reversi extends JFrame {
     private static JPanel panel;
     private Board actualGame = new Board();
     private int temp = 1;
+    static boolean player = false;
+    static Status pColor = Status.WHITE;
 
     public static void main(String[] args) {
         new Reversi();
