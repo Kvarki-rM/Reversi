@@ -7,7 +7,7 @@ class Board {
     Status turn = Status.BLACK;
     private Status pastTurn = Status.WHITE;
     Status helper = Status.BLACK_L;
-    int size = Reversi.size;
+    private int size = Reversi.size;
     private int temp = 0;
     int black = 2;
     int white = 2;
@@ -32,10 +32,10 @@ class Board {
 
 
     void backTurn() {
-        numTurn = numTurn - 2;
         for (int i = 0; i < board.length; i++)
             for (int j = 0; j < board[0].length; j++)
                 board[i][j].setStatus(lastBoard[i][j].getStatus());
+
         scanner();
         switchTurn();
     }
@@ -182,7 +182,7 @@ class Board {
             }
     }
 
-    private void scanner() {
+     void scanner() {
         cleaner();
         for (int i = 0; i < size; i++)
             for (int j = 0; j < size; j++)

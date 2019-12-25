@@ -16,7 +16,7 @@ public class Reversi extends JFrame {
     private Board actualGame = new Board();
     private int temp = 1;
     static boolean player = false;
-    static Status pColor = Status.WHITE;
+    static Status pColor = Status.BLACK;
 
     public static void main(String[] args) {
         new Reversi();
@@ -121,6 +121,7 @@ public class Reversi extends JFrame {
                 if (e.getButton() == MouseEvent.BUTTON1)
                     if (x >= size && temp >= 2) {
                         temp = 0;
+                        actualGame.numTurn = actualGame.numTurn - 2;
                         actualGame.backTurn();
                         panel.repaint();
                     } else if (x < size && y < size) {
@@ -133,21 +134,16 @@ public class Reversi extends JFrame {
     }
 
     private void botMakeTurn() {
-        for (int x = 0; x < actualGame.board.length; x++)
-            for (int y = 0; y < actualGame.board[0].length; y++) {
-                if (actualGame.helper == actualGame.board[x][y].getStatus()) {
-                    actualGame.add(x, y);
-                    x=actualGame.board.length;
-                    break;
-                }
-            }
-        actualGame.switchTurn();
-        setTitle(actualGame.turn + " Turn           " + "White : " + actualGame.white + " Black : " + actualGame.black);
-        if (actualGame.turn == Status.WHITE)
-            setIconImage(getImage(Tile.W_ICON));
-        else setIconImage(getImage(Tile.B_ICON));
-        if (actualGame.manyTurns == 0) end();
-        panel.repaint();
+        //for (int x = 0; x < actualGame.board.length; x++)
+        //    for (int y = 0; y < actualGame.board[0].length; y++) {
+        //        if (actualGame.helper == actualGame.board[x][y].getStatus()) {
+        //            actualGame.add(x, y);
+        //            x=actualGame.board.length;
+        //            break;
+        //        }
+        //    }
+        actualGame.add(Bot.coordinate(actualGame).x, Bot.coordinate(actualGame).y);
+        turner();
     }
 
 
@@ -161,13 +157,7 @@ public class Reversi extends JFrame {
         }
         if (actualGame.board[coord.x][coord.y].getStatus() == actualGame.helper) {
             actualGame.add(coord.x, coord.y);
-            actualGame.switchTurn();
-            setTitle("Bot's Turn           " + "White : " + actualGame.white + " Black : " + actualGame.black);
-            if (actualGame.turn == Status.WHITE)
-                setIconImage(getImage(Tile.W_ICON));
-            else setIconImage(getImage(Tile.B_ICON));
-            if (actualGame.manyTurns == 0) end();
-            panel.repaint();
+            turner();
             if (!player && (pColor != actualGame.turn)) {
                 temp++;
                 botMakeTurn();
@@ -176,6 +166,16 @@ public class Reversi extends JFrame {
             panel.repaint();
         }
 
+    }
+
+    private void turner() {
+        actualGame.switchTurn();
+        setTitle(actualGame.turn + " Turn           " + "White : " + actualGame.white + " Black : " + actualGame.black);
+        if (actualGame.turn == Status.WHITE)
+            setIconImage(getImage(Tile.W_ICON));
+        else setIconImage(getImage(Tile.B_ICON));
+        if (actualGame.manyTurns == 0) end();
+        panel.repaint();
     }
 
     private Image getImage(@NotNull Tile tile) {
