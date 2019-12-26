@@ -123,6 +123,8 @@ public class Reversi extends JFrame {
                         temp = 0;
                         actualGame.numTurn = actualGame.numTurn - 2;
                         actualGame.backTurn();
+                        actualGame.scanner();
+                        actualGame.switchTurn();
                         panel.repaint();
                     } else if (x < size && y < size) {
                         makeTurn(new Coordinate(x, y));
@@ -142,7 +144,13 @@ public class Reversi extends JFrame {
         //            break;
         //        }
         //    }
-        actualGame.add(Bot.coordinate(actualGame).x, Bot.coordinate(actualGame).y);
+        int x = Bot.coordinate(actualGame).x;
+        int y =  Bot.coordinate(actualGame).y;
+       // System.out.println(x);
+       // System.out.println(x);
+       // System.out.println(y);
+       // System.out.println(y);
+        actualGame.add(x,y);
         turner();
     }
 
@@ -161,7 +169,6 @@ public class Reversi extends JFrame {
             if (!player && (pColor != actualGame.turn)) {
                 temp++;
                 botMakeTurn();
-                System.out.println('1');
             }
             panel.repaint();
         }

@@ -2,7 +2,6 @@ import java.util.Objects;
 
 class Board {
     Cell[][] board;
-    int number;
     private Cell[][] lastBoard;
     Status turn = Status.BLACK;
     private Status pastTurn = Status.WHITE;
@@ -11,7 +10,7 @@ class Board {
     private int temp = 0;
     int black = 2;
     int white = 2;
-    int manyTurns = 4;
+    static int manyTurns = 0;
     int numTurn = 1;
 
     Board() {
@@ -36,8 +35,6 @@ class Board {
             for (int j = 0; j < board[0].length; j++)
                 board[i][j].setStatus(lastBoard[i][j].getStatus());
 
-        scanner();
-        switchTurn();
     }
 
     void switchTurn() {
@@ -61,9 +58,8 @@ class Board {
                     black++;
                 if (cells[j].getStatus() == Status.WHITE)
                     white++;
-                if (cells[j].getStatus() == helper)
-                    manyTurns++;
             }
+
         if (manyTurns == 0 && black + white != size * size && temp <= 1) {
             temp++;
             switchTurn();
@@ -182,15 +178,19 @@ class Board {
             }
     }
 
-     void scanner() {
+    void scanner() {
+        manyTurns = 0;
         cleaner();
         for (int i = 0; i < size; i++)
             for (int j = 0; j < size; j++)
                 if (Objects.equals(board[i][j].getStatus(), turn))
                     for (int z = 1; z < size - 1 - j; z++)
                         if (Objects.equals(board[i][j + z].getStatus(), pastTurn)) {
-                            if (Objects.equals(board[i][j + z + 1].getStatus(), Status.EMPTY))
+                            if (Objects.equals(board[i][j + z + 1].getStatus(), Status.EMPTY)) {
                                 board[i][j + z + 1].setStatus(helper);
+                                manyTurns++;
+                            }
+
                         } else break;
 
 
@@ -199,8 +199,10 @@ class Board {
                 if (Objects.equals(board[i][j].getStatus(), turn))
                     for (int z = 1; z < j; z++)
                         if (Objects.equals(board[i][j - z].getStatus(), pastTurn)) {
-                            if (Objects.equals(board[i][j - z - 1].getStatus(), Status.EMPTY))
+                            if (Objects.equals(board[i][j - z - 1].getStatus(), Status.EMPTY)) {
                                 board[i][j - z - 1].setStatus(helper);
+                                manyTurns++;
+                            }
                         } else break;
 
         for (int i = 0; i < size; i++)
@@ -208,8 +210,10 @@ class Board {
                 if (Objects.equals(board[i][j].getStatus(), turn))
                     for (int z = 1; z < size - 1 - i; z++)
                         if (Objects.equals(board[i + z][j].getStatus(), pastTurn)) {
-                            if (Objects.equals(board[i + z + 1][j].getStatus(), Status.EMPTY))
+                            if (Objects.equals(board[i + z + 1][j].getStatus(), Status.EMPTY)) {
                                 board[i + z + 1][j].setStatus(helper);
+                                manyTurns++;
+                            }
                         } else break;
 
 
@@ -218,8 +222,10 @@ class Board {
                 if (Objects.equals(board[i][j].getStatus(), turn))
                     for (int z = 1; z < i; z++)
                         if (Objects.equals(board[i - z][j].getStatus(), pastTurn)) {
-                            if (Objects.equals(board[i - z - 1][j].getStatus(), Status.EMPTY))
+                            if (Objects.equals(board[i - z - 1][j].getStatus(), Status.EMPTY)) {
                                 board[i - z - 1][j].setStatus(helper);
+                                manyTurns++;
+                            }
                         } else break;
 
 
@@ -228,8 +234,10 @@ class Board {
                 if (Objects.equals(board[i][j].getStatus(), turn))
                     for (int z = 1; z < Math.min(size - 1 - j, size - 1 - i); z++)
                         if (Objects.equals(board[i + z][j + z].getStatus(), pastTurn)) {
-                            if (Objects.equals(board[i + z + 1][j + z + 1].getStatus(), Status.EMPTY))
+                            if (Objects.equals(board[i + z + 1][j + z + 1].getStatus(), Status.EMPTY)) {
                                 board[i + z + 1][j + z + 1].setStatus(helper);
+                                manyTurns++;
+                            }
                         } else break;
 
 
@@ -238,8 +246,10 @@ class Board {
                 if (Objects.equals(board[i][j].getStatus(), turn))
                     for (int z = 1; z < Math.min(j, size - 1 - i); z++)
                         if (Objects.equals(board[i + z][j - z].getStatus(), pastTurn)) {
-                            if (Objects.equals(board[i + z + 1][j - z - 1].getStatus(), Status.EMPTY))
+                            if (Objects.equals(board[i + z + 1][j - z - 1].getStatus(), Status.EMPTY)) {
                                 board[i + z + 1][j - z - 1].setStatus(helper);
+                                manyTurns++;
+                            }
                         } else break;
 
 
@@ -248,8 +258,10 @@ class Board {
                 if (Objects.equals(board[i][j].getStatus(), turn))
                     for (int z = 1; z < Math.min(i, j); z++)
                         if (Objects.equals(board[i - z][j - z].getStatus(), pastTurn)) {
-                            if (Objects.equals(board[i - z - 1][j - z - 1].getStatus(), Status.EMPTY))
+                            if (Objects.equals(board[i - z - 1][j - z - 1].getStatus(), Status.EMPTY)) {
                                 board[i - z - 1][j - z - 1].setStatus(helper);
+                                manyTurns++;
+                            }
                         } else break;
 
             }
@@ -258,8 +270,10 @@ class Board {
                 if (Objects.equals(board[i][j].getStatus(), turn))
                     for (int z = 1; z < Math.min(size - 1 - j, i); z++)
                         if (Objects.equals(board[i - z][j + z].getStatus(), pastTurn)) {
-                            if (Objects.equals(board[i - z - 1][j + z + 1].getStatus(), Status.EMPTY))
+                            if (Objects.equals(board[i - z - 1][j + z + 1].getStatus(), Status.EMPTY)) {
                                 board[i - z - 1][j + z + 1].setStatus(helper);
+                                manyTurns++;
+                            }
                         } else break;
     }
 
