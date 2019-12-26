@@ -1,3 +1,5 @@
+package game;
+
 import org.jetbrains.annotations.Contract;
 
 public enum Status {

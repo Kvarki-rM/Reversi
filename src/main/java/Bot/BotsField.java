@@ -1,4 +1,10 @@
-class BotsField {
+package Bot;
+
+import Bot.BotCell;
+import game.Board;
+import game.Coordinate;
+
+public class BotsField {
     static private int size;
     private static BotCell[][] fieldValue;
 
@@ -109,7 +115,7 @@ class BotsField {
     private static void print() {
         for (int j = 0; j < size; j++) {
             for (int i = 0; i < size; i++) {
-                System.out.print(fieldValue[i][j].getSum() + " ");
+                System.out.print(fieldValue[i][j].getGrowth() + " ");
             }
             System.out.println();
         }

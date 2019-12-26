@@ -1,18 +1,20 @@
+package game;
+
 import java.util.Objects;
 
-class Board {
-    static Cell[][] board;
+public class Board {
+    public static Cell[][] board;
     private static Cell[][] lastBoard;
-    static Status turn = Status.BLACK;
+    public static Status turn = Status.BLACK;
     private static Status pastTurn = Status.WHITE;
-    static Status helper = Status.BLACK_L;
+    public static Status helper = Status.BLACK_L;
     private static int size = Reversi.size;
     private static int temp = 0;
     static int black = 2;
     static int white = 2;
-    static int manyTurns = 0;
-    static int numTurn = 1;
-    static int growth;
+    public static int manyTurns = 0;
+    public static int numTurn = 1;
+    public static int growth;
 
     Board() {
         growth = 0;
@@ -32,14 +34,14 @@ class Board {
     }
 
 
-    static void backTurn() {
+    public static void backTurn() {
         for (int i = 0; i < board.length; i++)
             for (int j = 0; j < board[0].length; j++)
                 board[i][j].setStatus(lastBoard[i][j].getStatus());
 
     }
 
-    static void switchTurn() {
+    public static void switchTurn() {
         black = 0;
         white = 0;
         manyTurns = 0;
@@ -68,7 +70,7 @@ class Board {
         }
     }
 
-    static void add(int x, int y) {
+    public static void add(int x, int y) {
         temp = 0;
         for (int i = 0; i < board.length; i++)
             for (int j = 0; j < board[0].length; j++)
@@ -180,8 +182,8 @@ class Board {
             }
     }
 
-    static void scanner() {
-        growth =0;
+    public static void scanner() {
+        growth = 0;
         manyTurns = 0;
         cleaner();
         for (int i = 0; i < size; i++)

@@ -1,3 +1,5 @@
+package Bot;
+
 class BotCell {
     private double Sum;
     private double posValue;

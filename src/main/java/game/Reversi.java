@@ -1,8 +1,11 @@
+package game;
+
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
 import javax.swing.border.Border;
-
+import Bot.Bot;
+import Bot.BotsField;
 import java.awt.*;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
@@ -184,7 +187,7 @@ public class Reversi extends JFrame {
     }
 
     private Image getImage(@NotNull Tile tile) {
-        return new ImageIcon(getClass().getResource(tile.getTitle())).getImage();
+        return new ImageIcon(tile.getTitle()).getImage();
     }
 
     private void end() {

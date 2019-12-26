@@ -1,6 +1,10 @@
+package Bot;
+
+import game.Board;
+import game.Coordinate;
 import org.jetbrains.annotations.NotNull;
 
-class Bot {
+public class Bot {
     static double[] val = new double[]{1.0, 2.0, 4.0, 6.0};//начало, середина, преконец, конец
     static double[] enemyTurnsVal = new double[]{6.0, 4.0, 2.0, 1.0};//ценность дать ход противнику
     static int[] times = new int[]{15, 35, 45, 52};//Номер ход на начало, середина, преконец, конец
@@ -16,7 +20,7 @@ class Bot {
       */
 
     @NotNull
-    static Coordinate coordinate() {
+    public static Coordinate coordinate() {
         System.out.println(Board.numTurn);
         new BotsField();
         BotsField.clearSumAndMany();

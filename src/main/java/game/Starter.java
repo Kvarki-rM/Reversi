@@ -1,3 +1,5 @@
+package game;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -13,7 +15,7 @@ public class Starter extends JFrame {
     private JRadioButton radio3 = new JRadioButton("P_vs_P");
 
     private Starter() {
-        super("Starter");
+        super("game.Starter");
         this.setBounds(500, 500, 350, 150);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         Container container = this.getContentPane();
@@ -44,7 +46,8 @@ public class Starter extends JFrame {
     class ButtonEvent implements ActionListener {
         public void actionPerformed(ActionEvent g) {
             Reversi.size = Integer.parseInt(input.getText());
-            if (radio2.isSelected()) {Reversi.turn = Status.WHITE;
+            if (radio2.isSelected()) {
+                Reversi.turn = Status.WHITE;
             Reversi.pColor = Status.WHITE; }
             if (radio3.isSelected()) Reversi.player = true;
             new Reversi();
