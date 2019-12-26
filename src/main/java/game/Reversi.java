@@ -4,7 +4,9 @@ import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
 import javax.swing.border.Border;
+
 import Bot.Bot;
+
 import java.awt.*;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
@@ -12,12 +14,12 @@ import java.awt.event.MouseEvent;
 
 public class Reversi extends JFrame {
     static Status turn;
-    static int size = 8;
+    public static int size = 8;
     private final static int imageSize = 64;
     private static JPanel panel;
     private int temp = 1;
     static boolean player = false;
-    static Status pColor = Status.BLACK;
+    public static Status pColor = Status.BLACK;
 
     public static void main(String[] args) {
         new Reversi();
@@ -155,12 +157,15 @@ public class Reversi extends JFrame {
             if (Board.manyTurns == 0)
                 end();
         }
+        //Thread.sleep(500);
         if (Board.board[coord.x][coord.y].getStatus() == Board.helper) {
             Board.add(coord.x, coord.y);
             turner();
             if (!player && (pColor != Board.turn)) {
+                if (Board.manyTurns == 0 && Board.black + Board.white != size * size && temp <= 1)
+                    Board.switchTurn();
+                else botMakeTurn();
                 temp++;
-                botMakeTurn();
             }
             panel.repaint();
         }

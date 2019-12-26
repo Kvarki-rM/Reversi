@@ -5,7 +5,7 @@ import java.util.Objects;
 public class Board {
     public static Cell[][] board;
     private static Cell[][] lastBoard;
-    public static Status turn = Status.BLACK;
+    static Status turn = Status.BLACK;
     public static Status pastTurn = Status.WHITE;
     public static Status helper = Status.BLACK_L;
     private static int size = Reversi.size;

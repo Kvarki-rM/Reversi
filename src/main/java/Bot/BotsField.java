@@ -1,11 +1,11 @@
 package Bot;
 
-import Bot.BotCell;
 import game.Board;
 import game.Coordinate;
+import game.Reversi;
 import game.Status;
 
-public class BotsField {
+class BotsField {
     static private int size;
     private static BotCell[][] fieldValue;
 
@@ -52,11 +52,16 @@ public class BotsField {
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
                 if (Board.board[i][j].getStatus() == Board.helper) {
-                    int growth = (Board.black - Board.white);
+                    int growth;
+                    if (Reversi.pColor == Status.BLACK)
+                        growth = (Board.black - Board.white);
+                    else growth = (Board.white - Board.black);
                     Board.add(i, j);
                     Board.switchTurn();
                     Board.scanner();
-                    growth = growth - (Board.white - Board.black);
+                    if (Reversi.pColor == Status.BLACK)
+                        growth = growth - (Board.white - Board.black);
+                    else growth = growth - (Board.black - Board.white);
                     fieldValue[i][j].setGrowth(growth);
                     fieldValue[i][j].setEnemyNext(Board.manyTurns);
                     Board.backTurn();
@@ -69,19 +74,19 @@ public class BotsField {
     }
 
     private static void converter() {
-        for (int i = 0; i < size; i++) {
-            for (int j = 0; j < size; j++) {
-                if (Board.numTurn <= Bot.times[0]) {//ПРОВЕРКА ЭТАПА ИГРЫ
-                    fieldValue[i][j].addSum(fieldValue[i][j].getEnemyNext() / Bot.enemyTurnsVal[0]);
-                } else if (Board.numTurn <= Bot.times[1]) {
-                    fieldValue[i][j].addSum(fieldValue[i][j].getEnemyNext() / Bot.enemyTurnsVal[1]);
-                } else if (Board.numTurn <= Bot.times[2]) {
-                    fieldValue[i][j].addSum(fieldValue[i][j].getEnemyNext() / Bot.enemyTurnsVal[2]);
-                } else if (Board.numTurn <= Bot.times[3]) {
-                    fieldValue[i][j].addSum(fieldValue[i][j].getEnemyNext() / Bot.enemyTurnsVal[3]);
-                }
-            }
-        }
+      for (int i = 0; i < size; i++) {
+          for (int j = 0; j < size; j++) {
+              if (Board.numTurn <= Bot.times[0]) {//ПРОВЕРКА ЭТАПА ИГРЫ
+                  fieldValue[i][j].addSum(fieldValue[i][j].getEnemyNext() / Bot.enemyTurnsVal[0]);
+              } else if (Board.numTurn <= Bot.times[1]) {
+                  fieldValue[i][j].addSum(fieldValue[i][j].getEnemyNext() / Bot.enemyTurnsVal[1]);
+              } else if (Board.numTurn <= Bot.times[2]) {
+                  fieldValue[i][j].addSum(fieldValue[i][j].getEnemyNext() / Bot.enemyTurnsVal[2]);
+              } else if (Board.numTurn <= Bot.times[3]) {
+                  fieldValue[i][j].addSum(fieldValue[i][j].getEnemyNext() / Bot.enemyTurnsVal[3]);
+              }
+          }
+      }
     }
 
 
