@@ -13,7 +13,6 @@ public class Reversi extends JFrame {
     static int size = 8;
     private final static int imageSize = 64;
     private static JPanel panel;
-    private Board actualGame = new Board();
     private int temp = 1;
     static boolean player = false;
     static Status pColor = Status.BLACK;
@@ -23,14 +22,15 @@ public class Reversi extends JFrame {
     }
 
     Reversi() {
+        new Board();
         if (turn == Status.WHITE) {
-            actualGame.switchTurn();
-            actualGame.numTurn -= 1;
+            Board.switchTurn();
+            Board.numTurn -= 1;
         }
         opener();
         pack();
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        setTitle(actualGame.turn + " Turn           " + "White : " + actualGame.white + " Black : " + actualGame.black);
+        setTitle(Board.turn + " Turn           " + "White : " + Board.white + " Black : " + Board.black);
         setIconImage(getImage(Tile.B_ICON));
         setLocationRelativeTo(null);
         setVisible(true);
@@ -81,8 +81,8 @@ public class Reversi extends JFrame {
                 g.setFont(new Font("Arial", Font.ITALIC, 18));
                 g.drawImage(getImage(Tile.DOP), imageSize * size, 0, this);
 
-                double whi = actualGame.white;
-                double bl = actualGame.black;
+                double whi = Board.white;
+                double bl = Board.black;
                 int i1 = (int) (Math.round(whi / (whi + bl) * 240));
 
                 wh.setPreferredSize(new Dimension(i1, 32));
@@ -94,18 +94,18 @@ public class Reversi extends JFrame {
                 label.setLocation(imageSize * size, 0);
                 label2.setLocation(imageSize * size + 128, 0);
                 back.setLocation(imageSize * size, 64);
-                label.setText("" + actualGame.white);
-                label2.setText("" + actualGame.black);
-                back.setText("Now move : " + actualGame.turn.toString().toLowerCase() + " / Turn № : " + actualGame.numTurn);
+                label.setText("" + Board.black);
+                label2.setText("" + Board.white);
+                back.setText("Now move : " + Board.turn.toString().toLowerCase() + " / Turn № : " + Board.numTurn);
 
-                if (actualGame.turn == Status.WHITE) back.setBackground(Color.WHITE);
+                if (Board.turn == Status.WHITE) back.setBackground(Color.WHITE);
                 else back.setBackground(Color.BLACK);
 
                 if (temp > 1) g.drawImage(getImage(Tile.BACK), imageSize * (size + 1) + 10, imageSize * 2 + 13, this);
 
                 for (int x = 0; x < size; x++)
                     for (int y = 0; y < size; y++)
-                        g.drawImage(getImage(actualGame.board[x][y].getStatus().getTile()), x * imageSize, y * imageSize, this);
+                        g.drawImage(getImage(Board.board[x][y].getStatus().getTile()), x * imageSize, y * imageSize, this);
             }
         };
         panel.setPreferredSize(new Dimension(size * imageSize + imageSize * 4, size * 64));
@@ -121,10 +121,10 @@ public class Reversi extends JFrame {
                 if (e.getButton() == MouseEvent.BUTTON1)
                     if (x >= size && temp >= 2) {
                         temp = 0;
-                        actualGame.numTurn = actualGame.numTurn - 2;
-                        actualGame.backTurn();
-                        actualGame.scanner();
-                        actualGame.switchTurn();
+                        Board.numTurn = Board.numTurn - 2;
+                        Board.backTurn();
+                        Board.scanner();
+                        Board.switchTurn();
                         panel.repaint();
                     } else if (x < size && y < size) {
                         makeTurn(new Coordinate(x, y));
@@ -144,29 +144,27 @@ public class Reversi extends JFrame {
         //            break;
         //        }
         //    }
-        int x = Bot.coordinate(actualGame).x;
-        int y =  Bot.coordinate(actualGame).y;
-       // System.out.println(x);
-       // System.out.println(x);
-       // System.out.println(y);
-       // System.out.println(y);
-        actualGame.add(x,y);
+        int x = Bot.coordinate().x;
+        int y = Bot.coordinate().y;
+        System.out.println(x);
+        System.out.println(y);
+        Board.add(x, y);
         turner();
     }
 
 
     private void makeTurn(Coordinate coord) {
-        if (actualGame.manyTurns == 0) {
+        if (Board.manyTurns == 0) {
             JOptionPane.showMessageDialog(this, "No way",
                     "Ret", JOptionPane.INFORMATION_MESSAGE);
-            actualGame.switchTurn();
-            if (actualGame.manyTurns == 0)
+            Board.switchTurn();
+            if (Board.manyTurns == 0)
                 end();
         }
-        if (actualGame.board[coord.x][coord.y].getStatus() == actualGame.helper) {
-            actualGame.add(coord.x, coord.y);
+        if (Board.board[coord.x][coord.y].getStatus() == Board.helper) {
+            Board.add(coord.x, coord.y);
             turner();
-            if (!player && (pColor != actualGame.turn)) {
+            if (!player && (pColor != Board.turn)) {
                 temp++;
                 botMakeTurn();
             }
@@ -176,12 +174,12 @@ public class Reversi extends JFrame {
     }
 
     private void turner() {
-        actualGame.switchTurn();
-        setTitle(actualGame.turn + " Turn           " + "White : " + actualGame.white + " Black : " + actualGame.black);
-        if (actualGame.turn == Status.WHITE)
+        Board.switchTurn();
+        setTitle(Board.turn + " Turn           " + "White : " + Board.white + " Black : " + Board.black);
+        if (Board.turn == Status.WHITE)
             setIconImage(getImage(Tile.W_ICON));
         else setIconImage(getImage(Tile.B_ICON));
-        if (actualGame.manyTurns == 0) end();
+        if (Board.manyTurns == 0) end();
         panel.repaint();
     }
 
@@ -190,7 +188,7 @@ public class Reversi extends JFrame {
     }
 
     private void end() {
-        JOptionPane.showMessageDialog(this, "Black " + actualGame.black + "\n" + "White " + actualGame.white,
+        JOptionPane.showMessageDialog(this, "Black " + Board.black + "\n" + "White " + Board.white,
                 "End", JOptionPane.INFORMATION_MESSAGE);
         this.dispose();
     }

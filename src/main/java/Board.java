@@ -1,43 +1,43 @@
 import java.util.Objects;
 
 class Board {
-    Cell[][] board;
-    private Cell[][] lastBoard;
-    Status turn = Status.BLACK;
-    private Status pastTurn = Status.WHITE;
-    Status helper = Status.BLACK_L;
-    private int size = Reversi.size;
-    private int temp = 0;
-    int black = 2;
-    int white = 2;
+   static Cell[][] board;
+    private static Cell[][] lastBoard;
+    static Status turn = Status.BLACK;
+    private static Status pastTurn = Status.WHITE;
+    static Status helper = Status.BLACK_L;
+    private static int size = Reversi.size;
+    private static int temp = 0;
+    static int black = 2;
+    static int white = 2;
     static int manyTurns = 0;
-    int numTurn = 1;
+   static int numTurn = 1;
 
     Board() {
-        this.board = new Cell[size][size];
-        this.lastBoard = new Cell[size][size];
+        board = new Cell[size][size];
+        lastBoard = new Cell[size][size];
         for (int x = 0; x < size; x++)
             for (int y = 0; y < size; y++)
                 lastBoard[x][y] = new Cell();
         for (int x = 0; x < size; x++)
             for (int y = 0; y < size; y++)
                 board[x][y] = new Cell();
-        this.board[size / 2 - 1][size / 2 - 1].setStatus(Status.WHITE);
-        this.board[size / 2 - 1][size / 2].setStatus(Status.BLACK);
-        this.board[size / 2][size / 2 - 1].setStatus(Status.BLACK);
-        this.board[size / 2][size / 2].setStatus(Status.WHITE);
+        board[size / 2 - 1][size / 2 - 1].setStatus(Status.WHITE);
+        board[size / 2 - 1][size / 2].setStatus(Status.BLACK);
+        board[size / 2][size / 2 - 1].setStatus(Status.BLACK);
+        board[size / 2][size / 2].setStatus(Status.WHITE);
         scanner();
     }
 
 
-    void backTurn() {
+    static void backTurn() {
         for (int i = 0; i < board.length; i++)
             for (int j = 0; j < board[0].length; j++)
                 board[i][j].setStatus(lastBoard[i][j].getStatus());
 
     }
 
-    void switchTurn() {
+    static void switchTurn() {
         black = 0;
         white = 0;
         manyTurns = 0;
@@ -52,8 +52,8 @@ class Board {
             helper = Status.WHITE_L;
         }
         scanner();
-        for (Cell[] cells : this.board)//подсчет статистики
-            for (int j = 0; j < this.board[0].length; j++) {
+        for (Cell[] cells : board)//подсчет статистики
+            for (int j = 0; j < board[0].length; j++) {
                 if (cells[j].getStatus() == Status.BLACK)
                     black++;
                 if (cells[j].getStatus() == Status.WHITE)
@@ -65,8 +65,7 @@ class Board {
             switchTurn();
         }
     }
-
-    void add(int x, int y) {
+    static void add(int x, int y) {
         temp = 0;
         for (int i = 0; i < board.length; i++)
             for (int j = 0; j < board[0].length; j++)
@@ -178,7 +177,7 @@ class Board {
             }
     }
 
-    void scanner() {
+    static void scanner() {
         manyTurns = 0;
         cleaner();
         for (int i = 0; i < size; i++)
@@ -277,7 +276,7 @@ class Board {
                         } else break;
     }
 
-    private void cleaner() {
+    private static void cleaner() {
         for (int i = 0; i < size; i++)
             for (int j = 0; j < size; j++)
                 if (Objects.equals(board[i][j].getStatus(), Status.WHITE_L) ||

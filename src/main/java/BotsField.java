@@ -1,13 +1,9 @@
-import org.jetbrains.annotations.NotNull;
-
 class BotsField {
     static private int size;
     private static BotCell[][] fieldValue;
-    private Board field;
 
-    BotsField(@NotNull Board field) {
-        this.field = field;
-        size = field.board.length;
+    BotsField() {
+        size = Board.board.length;
         fieldValue = new BotCell[size][size];
         for (int x = 0; x < size; x++)
             for (int y = 0; y < size; y++)
@@ -34,79 +30,70 @@ class BotsField {
         fieldValue[size / 2][size / 2].setPosValue(Bot.vallCell[6]);
     }
 
-    void comparatorAbuility() {//разболовка позиции за ход занятую позицию(только за позицию)
+    static void comparatorAbuility() {//разболовка позиции за ход занятую позицию(только за позицию)
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
-                if (field.board[i][j].getStatus() == field.helper) {
+                if (Board.board[i][j].getStatus() == Board.helper) {
                     fieldValue[i][j].setSum(fieldValue[i][j].getPosValue());
                 }
             }
         }
     }
 
+    static void scaManyAbuility() {
 
-    static Coordinate end() {
-        double max = -100;
-        int x = 0;
-        int y = 0;
-        for (int i = 0; i < size; i++) {
-            for (int j = 0; j < size; j++) {
-                if (fieldValue[i][j].getSum() > max) {
-                    max = fieldValue[i][j].getSum();
-                    x = i;
-                    y = j;
-                }
-            }
-        }
-        print();
-        return new Coordinate(x, y);
     }
 
-    void futureEnemyTurns() {
-        int temp = field.numTurn;
+    static void futureEnemyTurns() {
+        int temp = Board.numTurn;
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
-                if (field.board[i][j].getStatus() == field.helper) {
-                    field.add(i, j);
-                    field.switchTurn();
-                    field.scanner();
+                if (Board.board[i][j].getStatus() == Board.helper) {
+                    Board.add(i, j);
+                    Board.switchTurn();
+                    Board.scanner();
                     fieldValue[i][j].setEnemyNext(Board.manyTurns);
-                    field.backTurn();
-                    field.switchTurn();
+                    Board.backTurn();
+                    Board.switchTurn();
                 }
             }
         }
-        field.numTurn = temp;
+        Board.numTurn = temp;
         converter();
     }
 
-    static void converter() {
+    private static void converter() {
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
-                if (true) {//ПРОВЕРКА ЭТАПА ИГРЫ
-                    fieldValue[i][j].addSum(fieldValue[i][j].getEnemyNext() / Bot.times[0]*5);
-                } else if (true) {
-                } else if (true) {
-                }
-                if (true) {
+                if (Board.numTurn <= Bot.times[0]) {//ПРОВЕРКА ЭТАПА ИГРЫ
+                    fieldValue[i][j].addSum(fieldValue[i][j].getEnemyNext() / Bot.enemyTurnsVal[0]);
+                } else if (Board.numTurn <= Bot.times[1]) {
+                    fieldValue[i][j].addSum(fieldValue[i][j].getEnemyNext() / Bot.enemyTurnsVal[1]);
+                } else if (Board.numTurn <= Bot.times[2]) {
+                    fieldValue[i][j].addSum(fieldValue[i][j].getEnemyNext() / Bot.enemyTurnsVal[2]);
+                } else if (Board.numTurn <= Bot.times[3]) {
+                    fieldValue[i][j].addSum(fieldValue[i][j].getEnemyNext() / Bot.enemyTurnsVal[3]);
                 }
             }
         }
     }
 
-    void scanSingle() {
+
+    static void scanSingle() {
         for (int i = 0; i < size / 2; i++) {
             for (int j = 0; j < size / 2; j++) {
                 double temp = Bot.forSingle;
-                if (field.board[i * 2][j * 2].getStatus() != field.turn) temp -= Bot.forSingle / 4;
-                if (field.board[i * 2 + 1][j * 2].getStatus() != field.turn) temp -= Bot.forSingle / 4;
-                if (field.board[i * 2][j * 2 + 1].getStatus() != field.turn) temp -= Bot.forSingle / 4;
-                if (field.board[i * 2 + 1][j * 2 + 1].getStatus() != field.turn) temp -= Bot.forSingle / 4;
+                if (Board.board[i * 2][j * 2].getStatus() != Board.turn) temp -= Bot.forSingle / 4;
+                if (Board.board[i * 2 + 1][j * 2].getStatus() != Board.turn) temp -= Bot.forSingle / 4;
+                if (Board.board[i * 2][j * 2 + 1].getStatus() != Board.turn) temp -= Bot.forSingle / 4;
+                if (Board.board[i * 2 + 1][j * 2 + 1].getStatus() != Board.turn) temp -= Bot.forSingle / 4;
 
-                if (field.board[i * 2][j * 2].getStatus() == field.turn) fieldValue[i * 2][j * 2].addSum(temp);
-                if (field.board[i * 2 + 1][j * 2].getStatus() == field.turn) fieldValue[i * 2 + 1][j * 2].addSum(temp);
-                if (field.board[i * 2][j * 2 + 1].getStatus() == field.turn) fieldValue[i * 2][j * 2 + 1].addSum(temp);
-                if (field.board[i * 2 + 1][j * 2 + 1].getStatus() == field.turn)
+                if (Board.board[i * 2][j * 2].getStatus() == Board.turn) fieldValue[i * 2][j * 2].addSum(temp);
+                if (Board.board[i * 2 + 1][j * 2].getStatus() == Board.turn)
+                    fieldValue[i * 2 + 1][j * 2].addSum(temp);
+                if (Board.board[i * 2][j * 2 + 1].getStatus() == Board.turn)
+                    fieldValue[i * 2][j * 2 + 1].addSum(temp);
+                if (Board.board[i * 2 + 1][j * 2 + 1].getStatus() == Board.turn)
                     fieldValue[i * 2 + 1][j * 2 + 1].addSum(temp);
 
             }
@@ -114,9 +101,9 @@ class BotsField {
     }
 
 
-    static void print() {
-        for (int i = 0; i < size; i++) {
-            for (int j = 0; j < size; j++) {
+    private static void print() {
+        for (int j = 0; j < size; j++) {
+            for (int i = 0; i < size; i++) {
                 System.out.print(fieldValue[i][j].getSum() + " ");
             }
             System.out.println();
@@ -132,4 +119,20 @@ class BotsField {
             }
     }
 
+    static Coordinate end() {
+        double max = -100;
+        int x = 0;
+        int y = 0;
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                if (fieldValue[i][j].getSum() > max && Board.board[i][j].getStatus() == Board.helper) {
+                    max = fieldValue[i][j].getSum();
+                    x = i;
+                    y = j;
+                }
+            }
+        }
+        print();
+        return new Coordinate(x, y);
+    }
 }
