@@ -1,13 +1,18 @@
-package game;
+package Board;
+
+
+import Game.Status;
+import org.jetbrains.annotations.Contract;
 
 public class Cell {
     private Status status;
 
+    @Contract(pure = true)
     Cell() {
         this.status = Status.EMPTY;
     }
 
-    public void setStatus(Status status) {
+    void setStatus(Status status) {
         this.status = status;
     }
 

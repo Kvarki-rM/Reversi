@@ -1,8 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7b33e627-e8b0-418a-826f-f3b12b0a6b41" name="Default Changelist" comment="">
+    <list default="true" id="7b33e627-e8b0-418a-826f-f3b12b0a6b41" name="Default Changelist" comment="wtf">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Bot/Bot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Bot/Bot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Bot/BotCell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Bot/BotCell.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Bot/BotsField.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Bot/BotsField.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/game/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Board/Board.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/game/Cell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Board/Cell.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/game/Coordinate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Board/Coordinate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/game/Reversi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Game/Reversi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/game/Starter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Game/Starter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/game/Status.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Game/Status.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/game/Tile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Board/Tile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/LogicTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/LogicTest.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -57,7 +68,7 @@
       </method>
     </configuration>
     <configuration name="Starter" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="game.Starter" />
+      <option name="MAIN_CLASS_NAME" value="Game.Starter" />
       <module name="0.1" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -87,7 +98,7 @@
       <workItem from="1577105660467" duration="277000" />
       <workItem from="1577291807401" duration="44000" />
       <workItem from="1577291944561" duration="23853000" />
-      <workItem from="1577317857496" duration="27912000" />
+      <workItem from="1577317857496" duration="32181000" />
     </task>
     <task id="LOCAL-00001" summary="wtf">
       <created>1572288590783</created>
@@ -159,7 +170,14 @@
       <option name="project" value="LOCAL" />
       <updated>1577396305233</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="wtf">
+      <created>1577397851466</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1577397851466</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -183,20 +201,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="wtf" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/Bot/BotsField.java</url>
-          <line>79</line>
-          <option name="timeStamp" value="61" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/Bot/BotsField.java</url>
-          <line>106</line>
-          <option name="timeStamp" value="62" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
         <watch expression="field.board[i]" language="JAVA" />

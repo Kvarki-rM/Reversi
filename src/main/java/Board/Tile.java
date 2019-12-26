@@ -1,4 +1,4 @@
-package game;
+package Board;
 
 import org.jetbrains.annotations.Contract;
 

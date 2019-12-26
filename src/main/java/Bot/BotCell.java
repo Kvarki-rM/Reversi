@@ -1,11 +1,14 @@
 package Bot;
 
+import org.jetbrains.annotations.Contract;
+
 class BotCell {
     private double Sum;
     private double posValue;
     private int enemyNext;
     private int growth;
 
+    @Contract(pure = true)
     BotCell() {
         this.posValue = 0.0;
         enemyNext = 0;

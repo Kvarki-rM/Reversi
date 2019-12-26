@@ -1,9 +1,9 @@
 package Bot;
 
-import game.Board;
-import game.Coordinate;
-import game.Reversi;
-import game.Status;
+import Board.Board;
+import Board.Coordinate;
+import Game.Status;
+import Game.Reversi;
 
 class BotsField {
     static private int size;
@@ -47,22 +47,26 @@ class BotsField {
         }
     }
 
-    static void futureEnemyTurnsAndManyAbuility() {
+    static void futureEnemyTurnsAndManyAbuility(int time) {
         int temp = Board.numTurn;
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
                 if (Board.board[i][j].getStatus() == Board.helper) {
                     int growth;
-                    if (Reversi.pColor == Status.BLACK)
-                        growth = (Board.black - Board.white);
-                    else growth = (Board.white - Board.black);
+
+                    Board.accountant();
+                    if (Reversi.pColor == Status.BLACK) growth = (Board.white);
+                    else growth = (Board.white);
+
                     Board.add(i, j);
                     Board.switchTurn();
                     Board.scanner();
-                    if (Reversi.pColor == Status.BLACK)
-                        growth = growth - (Board.white - Board.black);
-                    else growth = growth - (Board.black - Board.white);
-                    fieldValue[i][j].setGrowth(growth);
+                    Board.accountant();
+
+                    if (Reversi.pColor == Status.BLACK) growth = (Board.white) - growth - 1;
+                    else growth = (Board.black) - growth - 1;
+
+                    fieldValue[i][j].setGrowth((int) (growth * Bot.enemyTurnsVal[time]));
                     fieldValue[i][j].setEnemyNext(Board.manyTurns);
                     Board.backTurn();
                     Board.switchTurn();
@@ -70,23 +74,15 @@ class BotsField {
             }
         }
         Board.numTurn = temp;
-        converter();
+        converter(time);
     }
 
-    private static void converter() {
-      for (int i = 0; i < size; i++) {
-          for (int j = 0; j < size; j++) {
-              if (Board.numTurn <= Bot.times[0]) {//ПРОВЕРКА ЭТАПА ИГРЫ
-                  fieldValue[i][j].addSum(fieldValue[i][j].getEnemyNext() / Bot.enemyTurnsVal[0]);
-              } else if (Board.numTurn <= Bot.times[1]) {
-                  fieldValue[i][j].addSum(fieldValue[i][j].getEnemyNext() / Bot.enemyTurnsVal[1]);
-              } else if (Board.numTurn <= Bot.times[2]) {
-                  fieldValue[i][j].addSum(fieldValue[i][j].getEnemyNext() / Bot.enemyTurnsVal[2]);
-              } else if (Board.numTurn <= Bot.times[3]) {
-                  fieldValue[i][j].addSum(fieldValue[i][j].getEnemyNext() / Bot.enemyTurnsVal[3]);
-              }
-          }
-      }
+    private static void converter(int time) {
+        for (int i = 0; i < size; i++)
+            for (int j = 0; j < size; j++){
+                fieldValue[i][j].addSum(fieldValue[i][j].getEnemyNext() / Bot.enemyTurnsVal[time]);
+                fieldValue[i][j].addSum(fieldValue[i][j].getGrowth() * Bot.val[time]);
+            }
     }
 
 
@@ -123,7 +119,7 @@ class BotsField {
     private static void paint() {
         for (int j = 0; j < size; j++) {
             for (int i = 0; i < size; i++) {
-                System.out.print(fieldValue[i][j].getSum() + " ");
+                System.out.print(fieldValue[i][j].getGrowth() + " ");
             }
             System.out.println();
         }

@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 class LogicTest {
     @Test
     void boardTest() {
-     //  game.Board firstTestBoard = new game.Board();
+     //  Board.Board firstTestBoard = new Board.Board();
      //  firstTestBoard.size = 8;
      //  firstTestBoard.add(4, 5);
      //  firstTestBoard.switchTurn();

@@ -1,10 +1,10 @@
-package game;
+package Board;
 
 import org.jetbrains.annotations.Contract;
 
 public class Coordinate {
-    int x;
-    int y;
+    public int x;
+    public int y;
 
     @Contract(pure = true)
     public Coordinate(int x, int y) {

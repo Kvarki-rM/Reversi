@@ -1,11 +1,14 @@
-package game;
+package Board;
+
+import Game.Reversi;
+import Game.Status;
 
 import java.util.Objects;
 
 public class Board {
     public static Cell[][] board;
     private static Cell[][] lastBoard;
-    static Status turn = Status.BLACK;
+    public static Status turn = Status.BLACK;
     public static Status pastTurn = Status.WHITE;
     public static Status helper = Status.BLACK_L;
     private static int size = Reversi.size;
@@ -15,7 +18,7 @@ public class Board {
     public static int manyTurns = 0;
     public static int numTurn = 1;
 
-    Board() {
+    public Board() {
         board = new Cell[size][size];
         lastBoard = new Cell[size][size];
         for (int x = 0; x < size; x++)
@@ -54,6 +57,16 @@ public class Board {
             helper = Status.WHITE_L;
         }
         scanner();
+        accountant();
+
+
+        if (manyTurns == 0 && black + white != size * size && temp <= 1) {
+            temp++;
+            switchTurn();
+        }
+    }
+
+    public static void accountant() {
         for (Cell[] cells : board)//подсчет статистики
             for (int j = 0; j < board[0].length; j++) {
                 if (cells[j].getStatus() == Status.BLACK)
@@ -61,11 +74,6 @@ public class Board {
                 if (cells[j].getStatus() == Status.WHITE)
                     white++;
             }
-
-        if (manyTurns == 0 && black + white != size * size && temp <= 1) {
-            temp++;
-            switchTurn();
-        }
     }
 
     public static void add(int x, int y) {
