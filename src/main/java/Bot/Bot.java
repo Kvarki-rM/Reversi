@@ -23,12 +23,11 @@ public class Bot {
     public static Coordinate coordinate() {
         System.out.println(Board.numTurn);
         new BotsField();
-        BotsField.clearSumAndMany();
-        BotsField.comparatorAbuility();
-        BotsField.futureEnemyTurns();
+      BotsField.clearSumAndMany();
+      BotsField.comparatorAbuility();
+      BotsField.futureEnemyTurnsAndManyAbuility();
 
         BotsField.scanSingle();
-        BotsField.scaManyAbuility();
         return BotsField.end();
     }
 }

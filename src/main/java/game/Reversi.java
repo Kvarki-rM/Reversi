@@ -5,7 +5,6 @@ import org.jetbrains.annotations.NotNull;
 import javax.swing.*;
 import javax.swing.border.Border;
 import Bot.Bot;
-import Bot.BotsField;
 import java.awt.*;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
@@ -139,14 +138,6 @@ public class Reversi extends JFrame {
     }
 
     private void botMakeTurn() {
-        //for (int x = 0; x < actualGame.board.length; x++)
-        //    for (int y = 0; y < actualGame.board[0].length; y++) {
-        //        if (actualGame.helper == actualGame.board[x][y].getStatus()) {
-        //            actualGame.add(x, y);
-        //            x=actualGame.board.length;
-        //            break;
-        //        }
-        //    }
         int x = Bot.coordinate().x;
         int y = Bot.coordinate().y;
         System.out.println(x);

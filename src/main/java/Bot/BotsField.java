@@ -3,6 +3,7 @@ package Bot;
 import Bot.BotCell;
 import game.Board;
 import game.Coordinate;
+import game.Status;
 
 public class BotsField {
     static private int size;
@@ -46,23 +47,17 @@ public class BotsField {
         }
     }
 
-    static void scaManyAbuility() {
-        for (int i = 0; i < size; i++) {
-            for (int j = 0; j < size; j++) {
-                Board.scanner();
-                fieldValue[i][j].setGrowth(Board.growth);
-            }
-        }
-    }
-
-    static void futureEnemyTurns() {
+    static void futureEnemyTurnsAndManyAbuility() {
         int temp = Board.numTurn;
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
                 if (Board.board[i][j].getStatus() == Board.helper) {
+                    int growth = (Board.black - Board.white);
                     Board.add(i, j);
                     Board.switchTurn();
                     Board.scanner();
+                    growth = growth - (Board.white - Board.black);
+                    fieldValue[i][j].setGrowth(growth);
                     fieldValue[i][j].setEnemyNext(Board.manyTurns);
                     Board.backTurn();
                     Board.switchTurn();
@@ -90,32 +85,40 @@ public class BotsField {
     }
 
 
-    static void scanSingle() {
+    static void scanSingle() {//Доп баллы за одиночек на кважратах 2X2
         for (int i = 0; i < size / 2; i++) {
             for (int j = 0; j < size / 2; j++) {
-                double temp = Bot.forSingle;
-                if (Board.board[i * 2][j * 2].getStatus() != Board.turn) temp -= Bot.forSingle / 4;
-                if (Board.board[i * 2 + 1][j * 2].getStatus() != Board.turn) temp -= Bot.forSingle / 4;
-                if (Board.board[i * 2][j * 2 + 1].getStatus() != Board.turn) temp -= Bot.forSingle / 4;
-                if (Board.board[i * 2 + 1][j * 2 + 1].getStatus() != Board.turn) temp -= Bot.forSingle / 4;
+                double temp = 0;
+                if (Board.board[i * 2][j * 2].getStatus() == Board.pastTurn && Board.board[i * 2][j * 2].getStatus() != Status.EMPTY)
+                    temp += Bot.forSingle / 4;
+                if (Board.board[i * 2 + 1][j * 2].getStatus() == Board.pastTurn && Board.board[i * 2 + 1][j * 2].getStatus() != Status.EMPTY)
+                    temp += Bot.forSingle / 4;
+                if (Board.board[i * 2][j * 2 + 1].getStatus() == Board.pastTurn && Board.board[i * 2][j * 2 + 1].getStatus() != Status.EMPTY)
+                    temp += Bot.forSingle / 4;
+                if (Board.board[i * 2 + 1][j * 2 + 1].getStatus() == Board.pastTurn && Board.board[i * 2 + 1][j * 2 + 1].getStatus() != Status.EMPTY)
+                    temp += Bot.forSingle / 4;
 
-                if (Board.board[i * 2][j * 2].getStatus() == Board.turn) fieldValue[i * 2][j * 2].addSum(temp);
-                if (Board.board[i * 2 + 1][j * 2].getStatus() == Board.turn)
+                if (Board.board[i * 2][j * 2].getStatus() == Board.helper) {
+                    fieldValue[i * 2][j * 2].addSum(temp);
+                }
+                if (Board.board[i * 2 + 1][j * 2].getStatus() == Board.helper) {
                     fieldValue[i * 2 + 1][j * 2].addSum(temp);
-                if (Board.board[i * 2][j * 2 + 1].getStatus() == Board.turn)
+                }
+                if (Board.board[i * 2][j * 2 + 1].getStatus() == Board.helper) {
                     fieldValue[i * 2][j * 2 + 1].addSum(temp);
-                if (Board.board[i * 2 + 1][j * 2 + 1].getStatus() == Board.turn)
+                }
+                if (Board.board[i * 2 + 1][j * 2 + 1].getStatus() == Board.helper) {
                     fieldValue[i * 2 + 1][j * 2 + 1].addSum(temp);
-
+                }
             }
         }
     }
 
 
-    private static void print() {
+    private static void paint() {
         for (int j = 0; j < size; j++) {
             for (int i = 0; i < size; i++) {
-                System.out.print(fieldValue[i][j].getGrowth() + " ");
+                System.out.print(fieldValue[i][j].getSum() + " ");
             }
             System.out.println();
         }
@@ -144,7 +147,7 @@ public class BotsField {
                 }
             }
         }
-        print();
+        paint();
         return new Coordinate(x, y);
     }
 }

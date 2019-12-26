@@ -46,9 +46,12 @@ public class Starter extends JFrame {
     class ButtonEvent implements ActionListener {
         public void actionPerformed(ActionEvent g) {
             Reversi.size = Integer.parseInt(input.getText());
+            if (Double.parseDouble(input.getText()) % 2 == 1)
+                throw new IllegalArgumentException("Только четный размер");
             if (radio2.isSelected()) {
                 Reversi.turn = Status.WHITE;
-            Reversi.pColor = Status.WHITE; }
+                Reversi.pColor = Status.WHITE;
+            }
             if (radio3.isSelected()) Reversi.player = true;
             new Reversi();
             dispose();
