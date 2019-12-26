@@ -1,7 +1,7 @@
 import java.util.Objects;
 
 class Board {
-   static Cell[][] board;
+    static Cell[][] board;
     private static Cell[][] lastBoard;
     static Status turn = Status.BLACK;
     private static Status pastTurn = Status.WHITE;
@@ -11,9 +11,11 @@ class Board {
     static int black = 2;
     static int white = 2;
     static int manyTurns = 0;
-   static int numTurn = 1;
+    static int numTurn = 1;
+    static int growth;
 
     Board() {
+        growth = 0;
         board = new Cell[size][size];
         lastBoard = new Cell[size][size];
         for (int x = 0; x < size; x++)
@@ -65,6 +67,7 @@ class Board {
             switchTurn();
         }
     }
+
     static void add(int x, int y) {
         temp = 0;
         for (int i = 0; i < board.length; i++)
@@ -178,6 +181,7 @@ class Board {
     }
 
     static void scanner() {
+        growth =0;
         manyTurns = 0;
         cleaner();
         for (int i = 0; i < size; i++)
@@ -186,6 +190,7 @@ class Board {
                     for (int z = 1; z < size - 1 - j; z++)
                         if (Objects.equals(board[i][j + z].getStatus(), pastTurn)) {
                             if (Objects.equals(board[i][j + z + 1].getStatus(), Status.EMPTY)) {
+                                growth++;
                                 board[i][j + z + 1].setStatus(helper);
                                 manyTurns++;
                             }
@@ -199,6 +204,7 @@ class Board {
                     for (int z = 1; z < j; z++)
                         if (Objects.equals(board[i][j - z].getStatus(), pastTurn)) {
                             if (Objects.equals(board[i][j - z - 1].getStatus(), Status.EMPTY)) {
+                                growth++;
                                 board[i][j - z - 1].setStatus(helper);
                                 manyTurns++;
                             }
@@ -210,6 +216,7 @@ class Board {
                     for (int z = 1; z < size - 1 - i; z++)
                         if (Objects.equals(board[i + z][j].getStatus(), pastTurn)) {
                             if (Objects.equals(board[i + z + 1][j].getStatus(), Status.EMPTY)) {
+                                growth++;
                                 board[i + z + 1][j].setStatus(helper);
                                 manyTurns++;
                             }
@@ -223,6 +230,7 @@ class Board {
                         if (Objects.equals(board[i - z][j].getStatus(), pastTurn)) {
                             if (Objects.equals(board[i - z - 1][j].getStatus(), Status.EMPTY)) {
                                 board[i - z - 1][j].setStatus(helper);
+                                growth++;
                                 manyTurns++;
                             }
                         } else break;
@@ -234,6 +242,7 @@ class Board {
                     for (int z = 1; z < Math.min(size - 1 - j, size - 1 - i); z++)
                         if (Objects.equals(board[i + z][j + z].getStatus(), pastTurn)) {
                             if (Objects.equals(board[i + z + 1][j + z + 1].getStatus(), Status.EMPTY)) {
+                                growth++;
                                 board[i + z + 1][j + z + 1].setStatus(helper);
                                 manyTurns++;
                             }
@@ -246,6 +255,7 @@ class Board {
                     for (int z = 1; z < Math.min(j, size - 1 - i); z++)
                         if (Objects.equals(board[i + z][j - z].getStatus(), pastTurn)) {
                             if (Objects.equals(board[i + z + 1][j - z - 1].getStatus(), Status.EMPTY)) {
+                                growth++;
                                 board[i + z + 1][j - z - 1].setStatus(helper);
                                 manyTurns++;
                             }
@@ -258,6 +268,7 @@ class Board {
                     for (int z = 1; z < Math.min(i, j); z++)
                         if (Objects.equals(board[i - z][j - z].getStatus(), pastTurn)) {
                             if (Objects.equals(board[i - z - 1][j - z - 1].getStatus(), Status.EMPTY)) {
+                                growth++;
                                 board[i - z - 1][j - z - 1].setStatus(helper);
                                 manyTurns++;
                             }
@@ -270,6 +281,7 @@ class Board {
                     for (int z = 1; z < Math.min(size - 1 - j, i); z++)
                         if (Objects.equals(board[i - z][j + z].getStatus(), pastTurn)) {
                             if (Objects.equals(board[i - z - 1][j + z + 1].getStatus(), Status.EMPTY)) {
+                                growth++;
                                 board[i - z - 1][j + z + 1].setStatus(helper);
                                 manyTurns++;
                             }

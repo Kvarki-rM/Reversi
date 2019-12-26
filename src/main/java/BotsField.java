@@ -41,7 +41,12 @@ class BotsField {
     }
 
     static void scaManyAbuility() {
-
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                Board.scanner();
+                fieldValue[i][j].setGrowth(Board.growth);
+            }
+        }
     }
 
     static void futureEnemyTurns() {
@@ -108,7 +113,7 @@ class BotsField {
             }
             System.out.println();
         }
-        System.out.println("_____________________________________________________");
+        System.out.println("___________________________________________");
     }
 
     static void clearSumAndMany() {
@@ -116,6 +121,7 @@ class BotsField {
             for (int j = 0; j < size; j++) {
                 fieldValue[i][j].setSum(0);
                 fieldValue[i][j].setEnemyNext(0);
+                fieldValue[i][j].setGrowth(0);
             }
     }
 

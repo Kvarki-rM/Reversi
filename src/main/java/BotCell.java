@@ -1,7 +1,8 @@
 class BotCell {
     private double Sum;
     private double posValue;
-    private double enemyNext;
+    private int enemyNext;
+    private int growth;
 
     BotCell() {
         this.posValue = 0.0;
@@ -22,6 +23,14 @@ class BotCell {
 
     void setEnemyNext(int x) {
         enemyNext = x;
+    }
+
+    void setGrowth(int x) {
+        growth = x;
+    }
+
+    double getGrowth() {
+        return growth;
     }
 
     double getEnemyNext() {

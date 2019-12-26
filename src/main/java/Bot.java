@@ -1,6 +1,6 @@
 import org.jetbrains.annotations.NotNull;
 
-public class Bot {
+class Bot {
     static double[] val = new double[]{1.0, 2.0, 4.0, 6.0};//начало, середина, преконец, конец
     static double[] enemyTurnsVal = new double[]{6.0, 4.0, 2.0, 1.0};//ценность дать ход противнику
     static int[] times = new int[]{15, 35, 45, 52};//Номер ход на начало, середина, преконец, конец
