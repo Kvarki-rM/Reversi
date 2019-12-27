@@ -6,10 +6,10 @@ import game.Reversi;
 import org.jetbrains.annotations.NotNull;
 
 public class Bot {
-    static double[] growthVal = new double[]{0.5, 0.7, 1.2, 2.0};//начало, середина, преконец, конец //Ценность прироста от стадии игры
+    static double[] growthVal = new double[]{0.2, 0.4, 1.0, 4.0};//начало, середина, преконец, конец //Ценность прироста от стадии игры
     static double[] enemyTurnsVal = new double[]{0.4, 0.33, 0.25, 0.1};//Ценность количества ходов сопернику
     private static double[] timings;//Времени на каждую стадию игры для вышеуказанных ценоностей
-    static double[] CellVall = new double[]{-3.0, 1.0, 1.1, 1.0, 2.5, 15.0, 0.0};//**номера с 1 по 8 на поле 8 на 8** углы, (a7, a2, b8, b1 ||..), (*2, *7, b*, g*), квадрат у начальных, у стенок, (b2, b7, g2, g7),центр
+    static double[] cellVall = new double[]{-3.0, -4.0, 0.5, 1.0, 3.5, 15.0, 0.0};//**номера с 1 по 8 на поле 8 на 8** углы, (a7, a2, b8, b1 ||..), (*2, *7, b*, g*), квадрат у начальных, у стенок, (b2, b7, g2, g7),центр
     static double forSingle = 4;
     static double forHelper = 5;
     private static double forHelp = 3;
@@ -25,7 +25,7 @@ public class Bot {
     @NotNull
     public static Coordinate coordinate() {
         int temp = Reversi.size * Reversi.size - 4;
-        timings = new double[]{temp * 0.1, temp * 0.2, temp * 0.6, temp * 0.8};
+        timings = new double[]{temp * 0.1, temp * 0.2, temp * 0.6, temp * 0.85};
         Board.scanner();
         System.out.print(Board.numTurn);
         int phase = 0; //ПРОВЕРКА ЭТАПА ИГРЫ

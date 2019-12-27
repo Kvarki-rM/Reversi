@@ -3,16 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="7b33e627-e8b0-418a-826f-f3b12b0a6b41" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Board/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/board/Board.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Board/Cell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/board/Cell.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Board/Coordinate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/board/Coordinate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Board/Tile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/board/Tile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bot/Bot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bot/Bot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bot/BotCell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bot/BotCell.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bot/BotsField.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bot/BotsField.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Game/Reversi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/Reversi.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Game/Starter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/Starter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Game/Status.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/Status.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bot/Bot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bot/Bot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bot/BotCell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bot/BotCell.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bot/BotsField.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bot/BotsField.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -97,7 +90,7 @@
       <workItem from="1577105660467" duration="277000" />
       <workItem from="1577291807401" duration="44000" />
       <workItem from="1577291944561" duration="23853000" />
-      <workItem from="1577317857496" duration="38362000" />
+      <workItem from="1577317857496" duration="38906000" />
     </task>
     <task id="LOCAL-00001" summary="wtf">
       <created>1572288590783</created>
@@ -190,7 +183,14 @@
       <option name="project" value="LOCAL" />
       <updated>1577407262543</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="wtf">
+      <created>1577409558666</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1577409558666</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -21,22 +21,22 @@ class BotsField {
             for (int j = 0; j < size; j++) {
                 if (i == 0 || j == 0 || i == size - 1 || j == size - 1) {
                     if ((j == 0 && (i == size - 1 || i == 0)) || ((i == 0 || i == size - 1) && j == size - 1)) {
-                        fieldValue[i][j].setPosValue(Bot.CellVall[5]);
+                        fieldValue[i][j].setPosValue(Bot.cellVall[5]);
                     } else if ((j == 0 && (i == 1 || i == size - 2)) || (j == size - 1 && (i == 1 || i == size - 2)) ||
                             (i == 0 && (j == 1 || j == size - 2)) || (i == size - 1 && (j == 1 || j == size - 2))) {
-                        fieldValue[i][j].setPosValue(Bot.CellVall[1]);
+                        fieldValue[i][j].setPosValue(Bot.cellVall[1]);
 
-                    } else fieldValue[i][j].setPosValue(Bot.CellVall[4]);
-                } else fieldValue[i][j].setPosValue(Bot.CellVall[2]);
+                    } else fieldValue[i][j].setPosValue(Bot.cellVall[4]);
+                } else fieldValue[i][j].setPosValue(Bot.cellVall[2]);
                 if ((i >= size / 2 - 2) && (i <= size / 2 + 1) && (j >= size / 2 - 2) && (j <= size / 2 + 1)) {
-                    fieldValue[i][j].setPosValue(Bot.CellVall[3]);
+                    fieldValue[i][j].setPosValue(Bot.cellVall[3]);
                 } else if ((j == 1 && (i == 1 || i == size - 2) || (j == size - 2 && (i == size - 2 || i == 1))))
-                    fieldValue[i][j].setPosValue(Bot.CellVall[0]);
+                    fieldValue[i][j].setPosValue(Bot.cellVall[0]);
             }
-        fieldValue[size / 2 - 1][size / 2 - 1].setPosValue(Bot.CellVall[6]);
-        fieldValue[size / 2 - 1][size / 2].setPosValue(Bot.CellVall[6]);
-        fieldValue[size / 2][size / 2 - 1].setPosValue(Bot.CellVall[6]);
-        fieldValue[size / 2][size / 2].setPosValue(Bot.CellVall[6]);
+        fieldValue[size / 2 - 1][size / 2 - 1].setPosValue(Bot.cellVall[6]);
+        fieldValue[size / 2 - 1][size / 2].setPosValue(Bot.cellVall[6]);
+        fieldValue[size / 2][size / 2 - 1].setPosValue(Bot.cellVall[6]);
+        fieldValue[size / 2][size / 2].setPosValue(Bot.cellVall[6]);
     }
 
     static void comparatorAbuility() {//разболовка позиции за ход занятую позицию(только за позицию)
@@ -147,7 +147,7 @@ class BotsField {
     private static void paint() {
         for (int j = 0; j < size; j++) {
             for (int i = 0; i < size; i++) {
-                System.out.print(fieldValue[i][j].getEnemyNext() + " ");
+                System.out.print(fieldValue[i][j].getSum() + " ");
             }
             System.out.println();
         }

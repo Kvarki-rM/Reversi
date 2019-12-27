@@ -18,6 +18,10 @@ class BotCell {
         this.posValue = val;
     }
 
+    double getPosValue() {
+        return this.posValue;
+    }
+
     void setSum(double val) {
         Sum = val;
     }
@@ -26,8 +30,16 @@ class BotCell {
         Sum += val;
     }
 
+    double getSum() {
+        return this.Sum;
+    }
+
     void setEnemyNext(double x) {
         enemyNext = x;
+    }
+
+    double getEnemyNext() {
+        return enemyNext;
     }
 
     void setGrowth(double x) {
@@ -38,15 +50,5 @@ class BotCell {
         return growth;
     }
 
-    double getEnemyNext() {
-        return enemyNext;
-    }
 
-    double getPosValue() {
-        return this.posValue;
-    }
-
-    double getSum() {
-        return this.Sum;
-    }
 }
