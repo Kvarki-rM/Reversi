@@ -133,15 +133,16 @@ public class Reversi extends JFrame {
                         Board.scanner();
                         Board.switchTurn();
                         panel.repaint();
-                    } else if (x < size && y < size)                         makeTurn(new Coordinate(x, y));
+                    } else if (x < size && y < size) makeTurn(new Coordinate(x, y));
             }
         });
         add(panel);
     }
 
     private void botMakeTurn() {
-        int x = Bot.coordinate().x;
-        int y = Bot.coordinate().y;
+        Coordinate date = Bot.coordinate();
+        int x = date.x;
+        int y = date.y;
         System.out.print("x = " + x + " y = " + y);
         Board.add(x, y);
         turner();

@@ -128,18 +128,27 @@ class BotsField {
             for (int j = 0; j < size; j++)
                 if (fieldValue[i][j].getSum() > max && Board.board[i][j].getStatus() == Board.helper)
                     max = fieldValue[i][j].getSum();
-
-        ArrayList<Pair<Integer, Integer>> aListColors = new ArrayList<>();
+        System.out.println("Max : " + max);
+        ArrayList<Integer> aListColors = new ArrayList<>();
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
                 if (fieldValue[i][j].getSum() == max && Board.board[i][j].getStatus() == Board.helper) {
-                    aListColors.add(new Pair<>(i,j));
+                    aListColors.add(i);
+                    aListColors.add(j);
                 }
             }
         }
-        Pair<Integer, Integer> z = aListColors.get(new Random().nextInt(aListColors.size()));
+        for (int i = 0; i < aListColors.size()/2; i++)
+            System.out.println("xx : " + aListColors.get(i* 2) + " yy : " + aListColors.get(i* 2 + 1));
+
+        int f = new Random().nextInt(aListColors.size() / 2);
+
+        System.out.println(f);
+        int x = aListColors.get(f * 2);
+        int y = aListColors.get(f * 2 + 1);
+
         paint();
-        return new Coordinate(z.getKey(), z.getValue());
+        return new Coordinate(x, y);
     }
 
     static void clearSumAndMany() {//обычный клинер значений fieldValu[][]
