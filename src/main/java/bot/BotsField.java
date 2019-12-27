@@ -4,8 +4,12 @@ import board.Board;
 import board.Coordinate;
 import game.Status;
 import game.Reversi;
+import javafx.util.Pair;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.ArrayList;
+import java.util.Random;
 
 class BotsField {
     static private int size;
@@ -120,19 +124,22 @@ class BotsField {
     @Contract(" -> new")
     static Coordinate end() {//поиск самого большого плюса на таблице fieldValue[][](на которой сраниваем значения)
         double max = -100;
-        int x = 0;
-        int y = 0;
+        for (int i = 0; i < size; i++)
+            for (int j = 0; j < size; j++)
+                if (fieldValue[i][j].getSum() > max && Board.board[i][j].getStatus() == Board.helper)
+                    max = fieldValue[i][j].getSum();
+
+        ArrayList<Pair<Integer, Integer>> aListColors = new ArrayList<>();
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
-                if (fieldValue[i][j].getSum() > max && Board.board[i][j].getStatus() == Board.helper) {
-                    max = fieldValue[i][j].getSum();
-                    x = i;
-                    y = j;
+                if (fieldValue[i][j].getSum() == max && Board.board[i][j].getStatus() == Board.helper) {
+                    aListColors.add(new Pair<>(i,j));
                 }
             }
         }
+        Pair<Integer, Integer> z = aListColors.get(new Random().nextInt(aListColors.size()));
         paint();
-        return new Coordinate(x, y);
+        return new Coordinate(z.getKey(), z.getValue());
     }
 
     static void clearSumAndMany() {//обычный клинер значений fieldValu[][]
