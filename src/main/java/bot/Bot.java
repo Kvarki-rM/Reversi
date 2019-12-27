@@ -27,7 +27,7 @@ public class Bot {
         int temp = Reversi.size * Reversi.size - 4;
         timings = new double[]{temp * 0.1, temp * 0.2, temp * 0.6, temp * 0.85};
         Board.scanner();
-        System.out.print(Board.numTurn);
+        System.out.print("Turn number : " + Board.numTurn);
         int phase = 0; //ПРОВЕРКА ЭТАПА ИГРЫ
         if (Board.numTurn >= Bot.timings[1]) phase = 1;
         if (Board.numTurn >= Bot.timings[2]) phase = 2;
@@ -37,7 +37,7 @@ public class Bot {
         BotsField.clearSumAndMany();//обнуление массива расценок
         BotsField.comparatorAbuility();
 
-        System.out.println(" " + phase);
+        System.out.println(" Phase : " + phase);
         if ((Bot.forHelp >= Board.white || Bot.forHelp >= Board.black) && phase > 0)
             BotsField.futureEnemyTurnsAndMany(phase, true);
         else BotsField.futureEnemyTurnsAndMany(phase, false);

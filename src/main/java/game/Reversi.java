@@ -133,17 +133,13 @@ public class Reversi extends JFrame {
                         Board.scanner();
                         Board.switchTurn();
                         panel.repaint();
-                    } else if (x < size && y < size) {
-                        makeTurn(new Coordinate(x, y));
-                        temp++;
-                    }
+                    } else if (x < size && y < size)                         makeTurn(new Coordinate(x, y));
             }
         });
         add(panel);
     }
 
     private void botMakeTurn() {
-        Object z = Bot.coordinate();
         int x = Bot.coordinate().x;
         int y = Bot.coordinate().y;
         System.out.print("x = " + x + " y = " + y);
@@ -162,6 +158,7 @@ public class Reversi extends JFrame {
         }
         //Thread.sleep(500);
         if (Board.board[coord.x][coord.y].getStatus() == Board.helper) {
+            temp++;
             Board.add(coord.x, coord.y);
             turner();
             if (!player && (pColor != Board.turn)) {

@@ -87,7 +87,7 @@ class BotsField {
     }
 
 
-    static void scanSingle() {//Доп баллы за одиночек на кважратах 2X2
+    static void scanSingle() {//Доп баллы за одиночек на квадратах 2X2
         for (int i = 0; i < size / 2; i++) {
             for (int j = 0; j < size / 2; j++) {
                 double temp = 0;
