@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7b33e627-e8b0-418a-826f-f3b12b0a6b41" name="Default Changelist" comment="" />
+    <list default="true" id="7b33e627-e8b0-418a-826f-f3b12b0a6b41" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bot/Bot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bot/Bot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bot/BotsField.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bot/BotsField.java" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -116,7 +120,7 @@
       <workItem from="1577317857496" duration="42499000" />
       <workItem from="1577414487019" duration="25000" />
       <workItem from="1577415372466" duration="548000" />
-      <workItem from="1577415996045" duration="3190000" />
+      <workItem from="1577415996045" duration="6649000" />
     </task>
     <task id="LOCAL-00001" summary="wtf">
       <created>1572288590783</created>
@@ -251,7 +255,14 @@
       <option name="project" value="LOCAL" />
       <updated>1577418932203</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="1.4 ADD RANDOM FOR ==">
+      <created>1577419402381</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1577419402381</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

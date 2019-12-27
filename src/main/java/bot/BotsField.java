@@ -4,7 +4,6 @@ import board.Board;
 import board.Coordinate;
 import game.Status;
 import game.Reversi;
-import javafx.util.Pair;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
@@ -59,7 +58,7 @@ class BotsField {
             for (int j = 0; j < size; j++) {
                 if (Board.board[i][j].getStatus() == Board.helper) {
                     int growth;
-
+                    double fff = Board.manyTurns;
                     if (Reversi.pColor == Status.BLACK) growth = (Board.white);
                     else growth = (Board.black);
 
@@ -70,7 +69,7 @@ class BotsField {
                     else growth = (Board.black) - growth - 1;
                     if (ult) fieldValue[i][j].setGrowth((growth * Bot.growthVal[time] * Bot.forHelper));
                     else fieldValue[i][j].setGrowth((growth * Bot.growthVal[time]));
-                    fieldValue[i][j].setEnemyNext(Board.manyTurns * Bot.enemyTurnsVal[time]);
+                    fieldValue[i][j].setEnemyNext(Board.manyTurns / fff * Bot.enemyTurnsVal[time]);
                     Board.backTurn();
                     Board.switchTurn();
                 }
@@ -138,8 +137,8 @@ class BotsField {
                 }
             }
         }
-        for (int i = 0; i < aListColors.size()/2; i++)
-            System.out.println("xx : " + aListColors.get(i* 2) + " yy : " + aListColors.get(i* 2 + 1));
+        for (int i = 0; i < aListColors.size() / 2; i++)
+            System.out.println("xx : " + aListColors.get(i * 2) + " yy : " + aListColors.get(i * 2 + 1));
 
         int f = new Random().nextInt(aListColors.size() / 2);
 
@@ -163,7 +162,7 @@ class BotsField {
     private static void paint() {
         for (int j = 0; j < size; j++) {
             for (int i = 0; i < size; i++) {
-                System.out.print(fieldValue[i][j].getSum() + " ");
+                System.out.print(fieldValue[i][j].getEnemyNext() + " ");
             }
             System.out.println();
         }
