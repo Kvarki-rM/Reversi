@@ -1,9 +1,9 @@
-package Bot;
+package bot;
 
-import Board.Board;
-import Board.Coordinate;
-import Game.Status;
-import Game.Reversi;
+import board.Board;
+import board.Coordinate;
+import game.Status;
+import game.Reversi;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
@@ -49,7 +49,7 @@ class BotsField {
         }
     }
 
-    static void futureEnemyTurnsAndManyAbuility(int time) {
+    static void futureEnemyTurnsAndMany(int time, boolean ult) {
         int temp = Board.numTurn;
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
@@ -64,8 +64,8 @@ class BotsField {
 
                     if (Reversi.pColor == Status.BLACK) growth = (Board.white) - growth - 1;
                     else growth = (Board.black) - growth - 1;
-
-                    fieldValue[i][j].setGrowth((growth* Bot.growthVal[time]));
+                    if (ult) fieldValue[i][j].setGrowth((growth * Bot.growthVal[time] * Bot.forHelper));
+                    else fieldValue[i][j].setGrowth((growth * Bot.growthVal[time]));
                     fieldValue[i][j].setEnemyNext(Board.manyTurns * Bot.enemyTurnsVal[time]);
                     Board.backTurn();
                     Board.switchTurn();

@@ -3,10 +3,16 @@
   <component name="ChangeListManager">
     <list default="true" id="7b33e627-e8b0-418a-826f-f3b12b0a6b41" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Board/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Board/Board.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bot/Bot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Bot/Bot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bot/BotCell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Bot/BotCell.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bot/BotsField.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Bot/BotsField.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Board/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/board/Board.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Board/Cell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/board/Cell.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Board/Coordinate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/board/Coordinate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Board/Tile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/board/Tile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Bot/Bot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bot/Bot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Bot/BotCell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bot/BotCell.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Bot/BotsField.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bot/BotsField.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Game/Reversi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/Reversi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Game/Starter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/Starter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Game/Status.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/Status.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -54,14 +60,14 @@
   </component>
   <component name="RunManager" selected="Application.Starter">
     <configuration name="Bot" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Bot.Bot" />
+      <option name="MAIN_CLASS_NAME" value="bot.Bot" />
       <module name="0.1" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <configuration name="Starter" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Game.Starter" />
+      <option name="MAIN_CLASS_NAME" value="game.Starter" />
       <module name="0.1" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -91,7 +97,7 @@
       <workItem from="1577105660467" duration="277000" />
       <workItem from="1577291807401" duration="44000" />
       <workItem from="1577291944561" duration="23853000" />
-      <workItem from="1577317857496" duration="36109000" />
+      <workItem from="1577317857496" duration="38362000" />
     </task>
     <task id="LOCAL-00001" summary="wtf">
       <created>1572288590783</created>
@@ -177,7 +183,14 @@
       <option name="project" value="LOCAL" />
       <updated>1577402829590</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="wtf">
+      <created>1577407262543</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1577407262543</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -1,7 +1,7 @@
-package Board;
+package board;
 
 
-import Game.Status;
+import game.Status;
 import org.jetbrains.annotations.Contract;
 
 public class Cell {

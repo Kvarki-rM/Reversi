@@ -1,14 +1,14 @@
-package Game;
+package game;
 
-import Board.Board;
+import board.Board;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
 import javax.swing.border.Border;
 
-import Bot.Bot;
-import Board.Coordinate;
-import Board.Tile;
+import bot.Bot;
+import board.Coordinate;
+import board.Tile;
 
 import java.awt.*;
 import java.awt.Font;

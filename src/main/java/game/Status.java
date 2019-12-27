@@ -1,6 +1,6 @@
-package Game;
+package game;
 
-import Board.Tile;
+import board.Tile;
 import org.jetbrains.annotations.Contract;
 
 public enum Status {

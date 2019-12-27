@@ -1,7 +1,7 @@
-package Board;
+package board;
 
-import Game.Reversi;
-import Game.Status;
+import game.Reversi;
+import game.Status;
 
 import java.util.Objects;
 
@@ -55,7 +55,7 @@ public class Board {
             turn = Status.WHITE;
             helper = Status.WHITE_L;
         }
-                scanner();
+        scanner();
         accountant();
         if (manyTurns == 0 && black + white != size * size && temp <= 1) {
             temp++;
@@ -63,7 +63,7 @@ public class Board {
         }
     }
 
-    public static void accountant() {
+    private static void accountant() {
         black = 0;
         white = 0;
 
