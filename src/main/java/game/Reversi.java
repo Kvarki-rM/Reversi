@@ -143,10 +143,10 @@ public class Reversi extends JFrame {
     }
 
     private void botMakeTurn() {
+        Object z = Bot.coordinate();
         int x = Bot.coordinate().x;
         int y = Bot.coordinate().y;
-        System.out.println(x);
-        System.out.println(y);
+        System.out.print("x = " + x + " y = " + y);
         Board.add(x, y);
         turner();
     }

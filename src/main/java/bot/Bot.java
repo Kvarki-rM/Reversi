@@ -16,9 +16,9 @@ public class Bot {
 
     /*Параметры от которых зависит выбор хода бота:
      1) позиция на поле, все поле разделено на сеторы разной стоимости (стоимость (CellVall[]) распределяется в BotsField из ) и сравнивается в comparatorAbuility()
-     2) количество фишек (если фишек катострофически мало то автоматически выбирается самый прибльный вариант helper())
+     2) ходов соперника на след ход (так же зависит от стадии игры enemyTurnsVal[] и распределяется в futureEnemyTurnsAndMany())
      3) количество прибовлеине фишек за ход на конкретной стадия игры (разбаловка из growthVal[] и распределяется в futureEnemyTurnsAndMany())
-     3) ходов соперника на след ход (так же зависит от стадии игры enemyTurnsVal[] и распределяется в futureEnemyTurnsAndMany())
+     3) количество фишек обеих сторон (если фишек катострофически мало то повышется приортиет у выбирается самых прибльных вариант helper())
      4) **пустые клетки среди вражеских фишек получают небольшой бонус scanSingle**
       */
 
@@ -34,7 +34,7 @@ public class Bot {
         if (Board.numTurn >= Bot.timings[3]) phase = 3;
 
         new BotsField();
-        BotsField.clearSumAndMany();
+        BotsField.clearSumAndMany();//обнуление массива расценок
         BotsField.comparatorAbuility();
 
         System.out.println(" " + phase);
