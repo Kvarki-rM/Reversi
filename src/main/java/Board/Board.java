@@ -43,8 +43,7 @@ public class Board {
     }
 
     public static void switchTurn() {
-        black = 0;
-        white = 0;
+
         manyTurns = 0;
         numTurn++;
 
@@ -56,10 +55,8 @@ public class Board {
             turn = Status.WHITE;
             helper = Status.WHITE_L;
         }
-        scanner();
+                scanner();
         accountant();
-
-
         if (manyTurns == 0 && black + white != size * size && temp <= 1) {
             temp++;
             switchTurn();
@@ -67,6 +64,9 @@ public class Board {
     }
 
     public static void accountant() {
+        black = 0;
+        white = 0;
+
         for (Cell[] cells : board)//подсчет статистики
             for (int j = 0; j < board[0].length; j++) {
                 if (cells[j].getStatus() == Status.BLACK)

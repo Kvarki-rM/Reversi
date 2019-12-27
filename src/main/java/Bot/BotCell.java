@@ -5,8 +5,8 @@ import org.jetbrains.annotations.Contract;
 class BotCell {
     private double Sum;
     private double posValue;
-    private int enemyNext;
-    private int growth;
+    private double enemyNext;
+    private double growth;
 
     @Contract(pure = true)
     BotCell() {
@@ -26,11 +26,11 @@ class BotCell {
         Sum += val;
     }
 
-    void setEnemyNext(int x) {
+    void setEnemyNext(double x) {
         enemyNext = x;
     }
 
-    void setGrowth(int x) {
+    void setGrowth(double x) {
         growth = x;
     }
 

@@ -6,10 +6,10 @@ import Game.Reversi;
 import org.jetbrains.annotations.NotNull;
 
 public class Bot {
-    static double[] val = new double[]{1.0, 2.0, 4.0, 6.0};//начало, середина, преконец, конец //Ценность прироста от стадии игры
-    static double[] enemyTurnsVal = new double[]{0.5, 1.5, 2.5, 6.0};//Ценность количества ходов сопернику
+    static double[] growthVal = new double[]{0.5, 0.7, 1.2, 2.0};//начало, середина, преконец, конец //Ценность прироста от стадии игры
+    static double[] enemyTurnsVal = new double[]{0.4, 0.3, 0.2, 0.1};//Ценность количества ходов сопернику
     private static double[] times;//Времени на каждую стадию игры для вышеуказанных ценоностей
-    static double[] vallCell = new double[]{-3.0, 1.0, 1.1, 1.0, 2.5, 10.0, 0.0};//**номера с 1 по 8 на поле 8 на 8** углы, (a7, a2, b8, b1 ||..), (*2, *7, b*, g*), квадрат у начальных, у стенок, (b2, b7, g2, g7),центр
+    static double[] CellVall = new double[]{-3.0, 1.0, 1.1, 1.0, 2.5, 15.0, 0.0};//**номера с 1 по 8 на поле 8 на 8** углы, (a7, a2, b8, b1 ||..), (*2, *7, b*, g*), квадрат у начальных, у стенок, (b2, b7, g2, g7),центр
     static double forSingle = 4;
     /*Характеристика хода(бальная система):
      1) позиция
@@ -21,10 +21,11 @@ public class Bot {
 
     @NotNull
     public static Coordinate coordinate() {
-        int temp = Reversi.size * Reversi.size;
-        times = new double[]{temp * 0.24, temp * 0.55, temp * 0.70, temp * 0.80};
+        int temp = Reversi.size * Reversi.size-4;
+        times = new double[]{temp * 0.2, temp * 0.45, temp * 0.6, temp * 0.825};
         Board.scanner();
-        System.out.println(Board.numTurn);
+        System.out.print(Board.numTurn);
+
         new BotsField();
         BotsField.clearSumAndMany();
         BotsField.comparatorAbuility();
@@ -34,6 +35,7 @@ public class Bot {
         if (Board.numTurn >= Bot.times[2]) time = 2;
         if (Board.numTurn >= Bot.times[3]) time = 3;
 
+        System.out.println(" " + time);
         BotsField.futureEnemyTurnsAndManyAbuility(time);
 
         BotsField.scanSingle();
